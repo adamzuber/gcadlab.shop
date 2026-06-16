@@ -1,9 +1,1400 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>GCAD Lab</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+  <!-- Primary SEO -->
+  <title>GCADLab — Intelligent Wealth Management Solutions</title>
+  <meta name="description" content="GCADLab offers institutional-grade portfolio management, structured investment products, and personalised financial planning for discerning investors. Build lasting wealth with clarity and confidence." />
+  <meta name="keywords" content="wealth management, investment portfolio, financial planning, structured products, asset allocation, GCADLab" />
+  <meta name="author" content="GCADLab Financial" />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://gcadlab.shop/" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://gcadlab.shop/" />
+  <meta property="og:title" content="GCADLab — Intelligent Wealth Management Solutions" />
+  <meta property="og:description" content="Institutional-grade portfolio management and structured investment products for discerning investors." />
+  <meta property="og:image" content="https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=1200&q=80" />
+  <meta property="og:site_name" content="GCADLab" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="GCADLab — Intelligent Wealth Management Solutions" />
+  <meta name="twitter:description" content="Institutional-grade portfolio management and structured investment products." />
+  <meta name="twitter:image" content="https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=1200&q=80" />
+
+  <!-- Schema.org Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FinancialService",
+    "name": "GCADLab Financial",
+    "url": "https://gcadlab.shop",
+    "description": "Intelligent wealth management, portfolio optimisation, and structured investment products for discerning investors.",
+    "areaServed": "Global",
+    "serviceType": ["Wealth Management", "Portfolio Management", "Financial Planning"]
+  }
+  </script>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ── RESET & BASE ───────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --navy:    #0A1628;
+      --navy-mid:#112240;
+      --gold:    #C9A84C;
+      --gold-lt: #E2C97E;
+      --cream:   #F8F6F1;
+      --silver:  #E8EDF4;
+      --slate:   #4A5568;
+      --text:    #1A2340;
+      --muted:   #6B7A99;
+      --white:   #FFFFFF;
+
+      --ff-display: 'Playfair Display', Georgia, serif;
+      --ff-body:    'Inter', system-ui, sans-serif;
+
+      --space-xs:  0.5rem;
+      --space-sm:  1rem;
+      --space-md:  2rem;
+      --space-lg:  4rem;
+      --space-xl:  7rem;
+
+      --radius-sm: 4px;
+      --radius-md: 12px;
+      --radius-lg: 20px;
+
+      --shadow-card: 0 8px 40px rgba(10,22,40,0.10);
+      --shadow-deep: 0 20px 60px rgba(10,22,40,0.18);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--ff-body);
+      background: var(--cream);
+      color: var(--text);
+      line-height: 1.7;
+      font-size: 16px;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    img { display: block; max-width: 100%; }
+
+    a { color: inherit; text-decoration: none; }
+
+    /* ── UTILITY ────────────────────────────────────────────── */
+    .container {
+      width: 92%;
+      max-width: 1180px;
+      margin-inline: auto;
+    }
+
+    .eyebrow {
+      font-family: var(--ff-body);
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--gold);
+    }
+
+    .section-title {
+      font-family: var(--ff-display);
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 700;
+      line-height: 1.2;
+      color: var(--navy);
+    }
+
+    .section-lead {
+      font-size: 1.05rem;
+      color: var(--slate);
+      max-width: 52ch;
+      line-height: 1.8;
+    }
+
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: var(--gold);
+      color: var(--navy);
+      font-family: var(--ff-body);
+      font-size: 0.85rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      padding: 0.85rem 2.2rem;
+      border-radius: 2px;
+      border: none;
+      cursor: pointer;
+      transition: background 0.25s, transform 0.18s;
+    }
+    .btn-primary:hover { background: var(--gold-lt); transform: translateY(-1px); }
+
+    .btn-outline {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: transparent;
+      color: var(--navy);
+      font-family: var(--ff-body);
+      font-size: 0.85rem;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      padding: 0.82rem 2rem;
+      border-radius: 2px;
+      border: 1.5px solid var(--navy);
+      cursor: pointer;
+      transition: background 0.22s, color 0.22s;
+    }
+    .btn-outline:hover { background: var(--navy); color: var(--white); }
+
+    /* ── NAV ────────────────────────────────────────────────── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      background: rgba(10, 22, 40, 0.96);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(201,168,76,0.15);
+    }
+
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 68px;
+    }
+
+    .logo {
+      font-family: var(--ff-display);
+      font-size: 1.45rem;
+      font-weight: 700;
+      color: var(--white);
+      letter-spacing: 0.01em;
+    }
+    .logo span { color: var(--gold); }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: var(--space-md);
+      list-style: none;
+    }
+    .nav-links a {
+      font-size: 0.82rem;
+      font-weight: 500;
+      color: rgba(255,255,255,0.72);
+      letter-spacing: 0.04em;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--gold); }
+
+    .nav-cta {
+      background: var(--gold);
+      color: var(--navy) !important;
+      padding: 0.55rem 1.4rem;
+      border-radius: 2px;
+      font-weight: 600 !important;
+    }
+    .nav-cta:hover { background: var(--gold-lt) !important; color: var(--navy) !important; }
+
+    /* ── HERO ───────────────────────────────────────────────── */
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      background: var(--navy);
+      overflow: hidden;
+      padding-top: 68px;
+    }
+
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background-image: url('https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=1600&q=75&auto=format&fit=crop');
+      background-size: cover;
+      background-position: center;
+      opacity: 0.18;
+    }
+
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(105deg, rgba(10,22,40,0.95) 42%, rgba(10,22,40,0.5) 100%);
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 700px;
+      padding: var(--space-xl) 0;
+    }
+
+    .hero-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.7rem;
+      margin-bottom: var(--space-md);
+    }
+    .hero-eyebrow .line {
+      width: 32px; height: 1.5px;
+      background: var(--gold);
+    }
+    .hero-eyebrow span {
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--gold);
+    }
+
+    .hero h1 {
+      font-family: var(--ff-display);
+      font-size: clamp(2.6rem, 6vw, 4.4rem);
+      font-weight: 700;
+      line-height: 1.12;
+      color: var(--white);
+      margin-bottom: var(--space-md);
+    }
+    .hero h1 em {
+      font-style: italic;
+      color: var(--gold);
+    }
+
+    .hero-sub {
+      font-size: 1.1rem;
+      color: rgba(255,255,255,0.65);
+      max-width: 48ch;
+      line-height: 1.8;
+      margin-bottom: var(--space-lg);
+    }
+
+    .hero-actions {
+      display: flex;
+      align-items: center;
+      gap: var(--space-sm);
+      flex-wrap: wrap;
+    }
+
+    /* Stat ticker */
+    .hero-stats {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      z-index: 3;
+      background: rgba(201,168,76,0.08);
+      border-top: 1px solid rgba(201,168,76,0.22);
+    }
+    .stats-row {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 0;
+    }
+    .stat-item {
+      flex: 1;
+      min-width: 140px;
+      padding: 1.4rem var(--space-md);
+      border-right: 1px solid rgba(201,168,76,0.15);
+      text-align: center;
+    }
+    .stat-item:last-child { border-right: none; }
+    .stat-value {
+      font-family: var(--ff-display);
+      font-size: 1.9rem;
+      font-weight: 700;
+      color: var(--gold);
+      line-height: 1;
+      display: block;
+    }
+    .stat-label {
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.5);
+      margin-top: 0.35rem;
+      display: block;
+    }
+
+    /* ── TRUST BAR ──────────────────────────────────────────── */
+    .trust-bar {
+      background: var(--silver);
+      padding: 1.6rem 0;
+      border-bottom: 1px solid #d5dce8;
+    }
+    .trust-inner {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 2.8rem;
+      flex-wrap: wrap;
+    }
+    .trust-label {
+      font-size: 0.68rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--muted);
+      font-weight: 600;
+      white-space: nowrap;
+    }
+    .trust-logos {
+      display: flex;
+      align-items: center;
+      gap: 2.4rem;
+      flex-wrap: wrap;
+    }
+    .trust-logo {
+      font-family: var(--ff-display);
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: #9EACC0;
+      letter-spacing: 0.05em;
+      white-space: nowrap;
+    }
+
+    /* ── PRODUCTS ───────────────────────────────────────────── */
+    .products {
+      padding: var(--space-xl) 0;
+      background: var(--cream);
+    }
+
+    .products-header {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-md);
+      align-items: end;
+      margin-bottom: var(--space-lg);
+    }
+    .products-header .eyebrow { margin-bottom: 0.8rem; display: block; }
+    .products-header .section-lead { margin-top: 1rem; }
+
+    .products-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.6rem;
+    }
+
+    .product-card {
+      background: var(--white);
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      box-shadow: var(--shadow-card);
+      transition: transform 0.28s, box-shadow 0.28s;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+    }
+    .product-card:hover {
+      transform: translateY(-6px);
+      box-shadow: var(--shadow-deep);
+    }
+
+    .product-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0;
+      width: 4px; height: 100%;
+      background: var(--gold);
+    }
+
+    .card-img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+    }
+
+    .card-body {
+      padding: 2rem 1.8rem 2rem 2.2rem;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .card-tag {
+      font-size: 0.65rem;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 0.75rem;
+    }
+
+    .card-title {
+      font-family: var(--ff-display);
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: var(--navy);
+      line-height: 1.25;
+      margin-bottom: 0.9rem;
+    }
+
+    .card-desc {
+      font-size: 0.9rem;
+      color: var(--slate);
+      line-height: 1.75;
+      flex: 1;
+      margin-bottom: 1.5rem;
+    }
+
+    .card-meta {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.8rem;
+      padding-top: 1.2rem;
+      border-top: 1px solid var(--silver);
+      margin-bottom: 1.5rem;
+    }
+    .meta-item .meta-label {
+      font-size: 0.62rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+      display: block;
+      margin-bottom: 0.2rem;
+    }
+    .meta-item .meta-value {
+      font-family: var(--ff-display);
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: var(--navy);
+    }
+
+    .card-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--gold);
+      letter-spacing: 0.04em;
+      margin-top: auto;
+      transition: gap 0.2s;
+    }
+    .card-link:hover { gap: 0.75rem; }
+    .card-link svg { flex-shrink: 0; }
+
+    /* ── HOW IT WORKS ───────────────────────────────────────── */
+    .how {
+      background: var(--navy);
+      padding: var(--space-xl) 0;
+      position: relative;
+      overflow: hidden;
+    }
+    .how::before {
+      content: '';
+      position: absolute;
+      top: -120px; right: -120px;
+      width: 480px; height: 480px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(201,168,76,0.07) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .how .eyebrow { color: var(--gold); margin-bottom: 0.8rem; display: block; }
+    .how .section-title { color: var(--white); margin-bottom: var(--space-lg); }
+
+    .steps-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1px;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: var(--radius-md);
+      overflow: hidden;
+    }
+
+    .step {
+      padding: 2.6rem 2rem;
+      background: rgba(255,255,255,0.02);
+      transition: background 0.25s;
+      position: relative;
+    }
+    .step:hover { background: rgba(201,168,76,0.06); }
+
+    .step-num {
+      font-family: var(--ff-display);
+      font-size: 3.5rem;
+      font-weight: 700;
+      color: rgba(201,168,76,0.15);
+      line-height: 1;
+      margin-bottom: 1.2rem;
+    }
+
+    .step-title {
+      font-family: var(--ff-display);
+      font-size: 1.15rem;
+      font-weight: 600;
+      color: var(--white);
+      margin-bottom: 0.8rem;
+    }
+
+    .step-text {
+      font-size: 0.87rem;
+      color: rgba(255,255,255,0.52);
+      line-height: 1.75;
+    }
+
+    /* ── ABOUT / FEATURE SPLIT ──────────────────────────────── */
+    .about {
+      padding: var(--space-xl) 0;
+      background: var(--white);
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-lg);
+      align-items: center;
+    }
+
+    .about-img-wrap {
+      position: relative;
+    }
+    .about-img {
+      width: 100%;
+      height: 520px;
+      object-fit: cover;
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-deep);
+    }
+    .about-badge {
+      position: absolute;
+      bottom: 2rem; left: -2rem;
+      background: var(--gold);
+      color: var(--navy);
+      padding: 1.4rem 1.8rem;
+      border-radius: var(--radius-md);
+      box-shadow: 0 12px 32px rgba(201,168,76,0.3);
+    }
+    .about-badge .badge-num {
+      font-family: var(--ff-display);
+      font-size: 2.2rem;
+      font-weight: 700;
+      line-height: 1;
+      display: block;
+    }
+    .about-badge .badge-text {
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      opacity: 0.8;
+      margin-top: 0.25rem;
+      display: block;
+    }
+
+    .about-content .eyebrow { margin-bottom: 0.8rem; display: block; }
+    .about-content .section-title { margin-bottom: 1.2rem; }
+    .about-content .section-lead { margin-bottom: var(--space-md); }
+
+    .feature-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      margin-bottom: var(--space-md);
+    }
+    .feature-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.9rem;
+      font-size: 0.9rem;
+      color: var(--slate);
+      line-height: 1.65;
+    }
+    .feature-list li .check {
+      flex-shrink: 0;
+      width: 20px; height: 20px;
+      border-radius: 50%;
+      background: rgba(201,168,76,0.12);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 2px;
+    }
+
+    /* ── TESTIMONIALS ───────────────────────────────────────── */
+    .testimonials {
+      background: var(--cream);
+      padding: var(--space-xl) 0;
+    }
+
+    .testimonials-header {
+      text-align: center;
+      margin-bottom: var(--space-lg);
+    }
+    .testimonials-header .eyebrow { margin-bottom: 0.8rem; display: block; }
+
+    .testi-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.6rem;
+    }
+
+    .testi-card {
+      background: var(--white);
+      border-radius: var(--radius-md);
+      padding: 2.2rem;
+      box-shadow: var(--shadow-card);
+      position: relative;
+    }
+    .testi-card::before {
+      content: '\201C';
+      position: absolute;
+      top: 1.2rem; right: 1.8rem;
+      font-family: var(--ff-display);
+      font-size: 5rem;
+      color: var(--gold);
+      opacity: 0.18;
+      line-height: 1;
+    }
+
+    .testi-text {
+      font-family: var(--ff-display);
+      font-style: italic;
+      font-size: 1.02rem;
+      color: var(--navy);
+      line-height: 1.7;
+      margin-bottom: 1.6rem;
+    }
+
+    .testi-author {
+      display: flex;
+      align-items: center;
+      gap: 0.9rem;
+    }
+    .testi-avatar {
+      width: 44px; height: 44px;
+      border-radius: 50%;
+      object-fit: cover;
+      flex-shrink: 0;
+    }
+    .testi-name {
+      font-size: 0.88rem;
+      font-weight: 600;
+      color: var(--navy);
+      display: block;
+    }
+    .testi-role {
+      font-size: 0.75rem;
+      color: var(--muted);
+      display: block;
+      margin-top: 0.1rem;
+    }
+
+    .stars {
+      display: flex;
+      gap: 2px;
+      margin-bottom: 1.2rem;
+    }
+    .star {
+      width: 14px; height: 14px;
+      fill: var(--gold);
+    }
+
+    /* ── CTA SECTION ────────────────────────────────────────── */
+    .cta-section {
+      background: var(--navy-mid);
+      padding: var(--space-xl) 0;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .cta-section::after {
+      content: '';
+      position: absolute;
+      bottom: -80px; left: 50%;
+      transform: translateX(-50%);
+      width: 600px; height: 600px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(201,168,76,0.09) 0%, transparent 65%);
+      pointer-events: none;
+    }
+
+    .cta-section .eyebrow { margin-bottom: 1rem; display: block; }
+
+    .cta-title {
+      font-family: var(--ff-display);
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 700;
+      color: var(--white);
+      line-height: 1.2;
+      max-width: 18ch;
+      margin: 0 auto 1.2rem;
+    }
+    .cta-title em { font-style: italic; color: var(--gold); }
+
+    .cta-sub {
+      font-size: 1rem;
+      color: rgba(255,255,255,0.55);
+      max-width: 44ch;
+      margin: 0 auto var(--space-md);
+      line-height: 1.8;
+    }
+
+    .cta-actions {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: var(--space-sm);
+      flex-wrap: wrap;
+    }
+    .cta-actions .btn-outline {
+      border-color: rgba(255,255,255,0.3);
+      color: rgba(255,255,255,0.85);
+    }
+    .cta-actions .btn-outline:hover {
+      background: rgba(255,255,255,0.08);
+      color: var(--white);
+    }
+
+    /* ── FOOTER ─────────────────────────────────────────────── */
+    footer {
+      background: var(--navy);
+      border-top: 1px solid rgba(255,255,255,0.05);
+      padding: var(--space-lg) 0 var(--space-md);
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.8fr 1fr 1fr 1fr;
+      gap: var(--space-md);
+      margin-bottom: var(--space-lg);
+    }
+
+    .footer-brand .logo { font-size: 1.3rem; margin-bottom: 1rem; display: block; }
+
+    .footer-desc {
+      font-size: 0.85rem;
+      color: rgba(255,255,255,0.4);
+      line-height: 1.8;
+      max-width: 30ch;
+    }
+
+    .footer-col h4 {
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.35);
+      margin-bottom: 1.2rem;
+    }
+
+    .footer-links {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+    .footer-links a {
+      font-size: 0.85rem;
+      color: rgba(255,255,255,0.52);
+      transition: color 0.2s;
+    }
+    .footer-links a:hover { color: var(--gold); }
+
+    .footer-bottom {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: var(--space-sm);
+      padding-top: var(--space-md);
+      border-top: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .footer-copy {
+      font-size: 0.77rem;
+      color: rgba(255,255,255,0.28);
+    }
+
+    .footer-legal {
+      display: flex;
+      gap: 1.6rem;
+    }
+    .footer-legal a {
+      font-size: 0.77rem;
+      color: rgba(255,255,255,0.28);
+      transition: color 0.2s;
+    }
+    .footer-legal a:hover { color: rgba(255,255,255,0.5); }
+
+    /* ── ANIMATIONS ─────────────────────────────────────────── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .fade-up { animation: fadeUp 0.7s ease both; }
+    .delay-1 { animation-delay: 0.12s; }
+    .delay-2 { animation-delay: 0.24s; }
+    .delay-3 { animation-delay: 0.36s; }
+    .delay-4 { animation-delay: 0.48s; }
+
+    /* ── RESPONSIVE ─────────────────────────────────────────── */
+    @media (max-width: 1024px) {
+      .products-grid { grid-template-columns: 1fr 1fr; }
+      .steps-grid { grid-template-columns: 1fr 1fr; }
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+    }
+
+    @media (max-width: 768px) {
+      :root { --space-xl: 4rem; --space-lg: 2.5rem; }
+      .nav-links { display: none; }
+      .products-header { grid-template-columns: 1fr; }
+      .products-grid { grid-template-columns: 1fr; }
+      .about-grid { grid-template-columns: 1fr; }
+      .about-badge { left: 1rem; }
+      .testi-grid { grid-template-columns: 1fr; }
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+      .stats-row { justify-content: center; }
+      .stat-item { border-right: none; border-bottom: 1px solid rgba(201,168,76,0.12); }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+    }
+  </style>
 </head>
+
 <body>
-    <h1>Hello from gcadlab.shop</h1>
+
+  <!-- ── NAVIGATION ─────────────────────────────────── -->
+  <nav aria-label="Main navigation">
+    <div class="container nav-inner">
+      <a href="/" class="logo" aria-label="GCADLab Home">GCAD<span>Lab</span></a>
+      <ul class="nav-links">
+        <li><a href="#products">Products</a></li>
+        <li><a href="#how">How It Works</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#testimonials">Clients</a></li>
+        <li><a href="#contact" class="nav-cta">Get Started</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- ── HERO ───────────────────────────────────────── -->
+  <header class="hero" role="banner">
+    <div class="hero-bg" aria-hidden="true"></div>
+    <div class="hero-overlay" aria-hidden="true"></div>
+
+    <div class="container hero-content">
+      <div class="hero-eyebrow fade-up">
+        <span class="line" aria-hidden="true"></span>
+        <span>Intelligent Wealth Management</span>
+      </div>
+
+      <h1 class="fade-up delay-1">
+        Capital that works<br /><em>as hard as you do.</em>
+      </h1>
+
+      <p class="hero-sub fade-up delay-2">
+        GCADLab delivers institutional-grade investment solutions built for private investors who demand precision, transparency, and long-term performance.
+      </p>
+
+      <div class="hero-actions fade-up delay-3">
+        <a href="#products" class="btn-primary">
+          Explore Products
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+            <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </a>
+        <a href="#about" class="btn-outline" style="border-color:rgba(255,255,255,0.3);color:rgba(255,255,255,0.85);">
+          Learn More
+        </a>
+      </div>
+    </div>
+
+    <!-- Stat bar -->
+    <div class="hero-stats" aria-label="Key statistics">
+      <div class="container">
+        <div class="stats-row">
+          <div class="stat-item">
+            <span class="stat-value" data-target="4.2">0</span>
+            <span class="stat-label">Billion AUM</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-value" data-target="98" data-suffix="%">0%</span>
+            <span class="stat-label">Client Retention</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-value" data-target="14.7" data-suffix="%">0%</span>
+            <span class="stat-label">Avg. Annual Return</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-value" data-target="2400">0</span>
+            <span class="stat-label">Active Portfolios</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-value" data-target="18">0</span>
+            <span class="stat-label">Years of Excellence</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- ── TRUST BAR ───────────────────────────────────── -->
+  <section class="trust-bar" aria-label="Trusted by leading institutions">
+    <div class="container trust-inner">
+      <span class="trust-label">Trusted by</span>
+      <div class="trust-logos">
+        <span class="trust-logo">Meridian Capital</span>
+        <span class="trust-logo">Aldworth & Sons</span>
+        <span class="trust-logo">Northgate Ventures</span>
+        <span class="trust-logo">Paladin Trust</span>
+        <span class="trust-logo">Ardent Private Bank</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── PRODUCTS ────────────────────────────────────── -->
+  <section id="products" class="products" aria-labelledby="products-heading">
+    <div class="container">
+      <div class="products-header">
+        <div>
+          <span class="eyebrow">Our Solutions</span>
+          <h2 class="section-title" id="products-heading">Structured for every<br />stage of wealth.</h2>
+        </div>
+        <div>
+          <p class="section-lead">Three carefully engineered investment products, each designed around a distinct risk-return profile and investment horizon.</p>
+        </div>
+      </div>
+
+      <div class="products-grid">
+
+        <!-- Product 1 -->
+        <article class="product-card" aria-label="GCADLab Apex Portfolio">
+          <img
+            class="card-img"
+            src="https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=700&q=75&auto=format&fit=crop"
+            alt="Abstract financial chart representing the Apex Portfolio growth trajectory"
+            loading="lazy"
+            width="700" height="200"
+          />
+          <div class="card-body">
+            <span class="card-tag">Growth Portfolio</span>
+            <h3 class="card-title">Apex Portfolio</h3>
+            <p class="card-desc">
+              A diversified, actively managed multi-asset portfolio targeting superior long-term capital growth. Apex combines global equities, emerging-market allocations, and alternative assets under a single, transparent fee structure.
+            </p>
+            <div class="card-meta">
+              <div class="meta-item">
+                <span class="meta-label">Target Return</span>
+                <span class="meta-value">12–18% p.a.</span>
+              </div>
+              <div class="meta-item">
+                <span class="meta-label">Min. Investment</span>
+                <span class="meta-value">USD 50,000</span>
+              </div>
+              <div class="meta-item">
+                <span class="meta-label">Horizon</span>
+                <span class="meta-value">5+ Years</span>
+              </div>
+              <div class="meta-item">
+                <span class="meta-label">Risk Level</span>
+                <span class="meta-value">Moderate–High</span>
+              </div>
+            </div>
+            <a href="#contact" class="card-link">
+              Learn More
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+                <path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </a>
+          </div>
+        </article>
+
+        <!-- Product 2 -->
+        <article class="product-card" aria-label="GCADLab Preserve Income Bond Strategy">
+          <img
+            class="card-img"
+            src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=700&q=75&auto=format&fit=crop"
+            alt="Professional financial planning desk representing the Preserve Income strategy"
+            loading="lazy"
+            width="700" height="200"
+          />
+          <div class="card-body">
+            <span class="card-tag">Income Strategy</span>
+            <h3 class="card-title">Preserve Income</h3>
+            <p class="card-desc">
+              Engineered for investors prioritising capital preservation and predictable income streams. Preserve Income invests in investment-grade fixed income, dividend equities, and inflation-linked instruments to deliver stable quarterly distributions.
+            </p>
+            <div class="card-meta">
+              <div class="meta-item">
+                <span class="meta-label">Target Yield</span>
+                <span class="meta-value">6–9% p.a.</span>
+              </div>
+              <div class="meta-item">
+                <span class="meta-label">Min. Investment</span>
+                <span class="meta-value">USD 25,000</span>
+              </div>
+              <div class="meta-item">
+                <span class="meta-label">Horizon</span>
+                <span class="meta-value">3–7 Years</span>
+              </div>
+              <div class="meta-item">
+                <span class="meta-label">Risk Level</span>
+                <span class="meta-value">Conservative</span>
+              </div>
+            </div>
+            <a href="#contact" class="card-link">
+              Learn More
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+                <path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </a>
+          </div>
+        </article>
+
+        <!-- Product 3 -->
+        <article class="product-card" aria-label="GCADLab Alpha Alternatives Fund">
+          <img
+            class="card-img"
+            src="https://images.unsplash.com/photo-1590283603385-17ffb3a7f29f?w=700&q=75&auto=format&fit=crop"
+            alt="Modern cityscape at night symbolising the alternative investment landscape"
+            loading="lazy"
+            width="700" height="200"
+          />
+          <div class="card-body">
+            <span class="card-tag">Alternatives</span>
+            <h3 class="card-title">Alpha Alternatives</h3>
+            <p class="card-desc">
+              Exclusive access to private equity, real assets, and quantitative hedge strategies previously reserved for institutional allocators. Alpha Alternatives is designed for sophisticated investors seeking uncorrelated, high-conviction returns.
+            </p>
+            <div class="card-meta">
+              <div class="meta-item">
+                <span class="meta-label">Target Return</span>
+                <span class="meta-value">18–25% p.a.</span>
+              </div>
+              <div class="meta-item">
+                <span class="meta-label">Min. Investment</span>
+                <span class="meta-value">USD 250,000</span>
+              </div>
+              <div class="meta-item">
+                <span class="meta-label">Horizon</span>
+                <span class="meta-value">7–10 Years</span>
+              </div>
+              <div class="meta-item">
+                <span class="meta-label">Risk Level</span>
+                <span class="meta-value">High</span>
+              </div>
+            </div>
+            <a href="#contact" class="card-link">
+              Learn More
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+                <path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </a>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ── HOW IT WORKS ────────────────────────────────── -->
+  <section id="how" class="how" aria-labelledby="how-heading">
+    <div class="container">
+      <span class="eyebrow">The Process</span>
+      <h2 class="section-title" id="how-heading" style="color:var(--white);">From first consultation<br />to lasting returns.</h2>
+
+      <div class="steps-grid">
+        <div class="step">
+          <div class="step-num" aria-hidden="true">01</div>
+          <h3 class="step-title">Discovery Call</h3>
+          <p class="step-text">We begin with a confidential conversation to understand your financial goals, time horizon, tax position, and risk tolerance.</p>
+        </div>
+        <div class="step">
+          <div class="step-num" aria-hidden="true">02</div>
+          <h3 class="step-title">Portfolio Design</h3>
+          <p class="step-text">Our quant team models a bespoke allocation strategy, stress-tested across market scenarios, before presenting it for your review.</p>
+        </div>
+        <div class="step">
+          <div class="step-num" aria-hidden="true">03</div>
+          <h3 class="step-title">Seamless Onboarding</h3>
+          <p class="step-text">Fully digital account opening with institutional-grade KYC and AML processes completed in as little as 48 hours.</p>
+        </div>
+        <div class="step">
+          <div class="step-num" aria-hidden="true">04</div>
+          <h3 class="step-title">Active Monitoring</h3>
+          <p class="step-text">Real-time dashboard access, quarterly performance reviews, and a dedicated relationship manager available on demand.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── ABOUT ───────────────────────────────────────── -->
+  <section id="about" class="about" aria-labelledby="about-heading">
+    <div class="container about-grid">
+
+      <div class="about-img-wrap">
+        <img
+          class="about-img"
+          src="https://images.unsplash.com/photo-1551836022-d5d88e9218df?w=800&q=75&auto=format&fit=crop"
+          alt="GCADLab wealth advisors in a professional meeting reviewing client portfolios"
+          loading="lazy"
+          width="800" height="520"
+        />
+        <div class="about-badge" aria-label="18 years of proven excellence">
+          <span class="badge-num">18</span>
+          <span class="badge-text">Years of<br/>Excellence</span>
+        </div>
+      </div>
+
+      <div class="about-content">
+        <span class="eyebrow">Why GCADLab</span>
+        <h2 class="section-title" id="about-heading">Precision-driven.<br />People-first.</h2>
+        <p class="section-lead">
+          We combine quantitative rigour with genuine human partnership. Every portfolio at GCADLab is overseen by a senior investment committee with an average of 22 years' market experience.
+        </p>
+        <ul class="feature-list">
+          <li>
+            <span class="check" aria-hidden="true">
+              <svg width="10" height="10" viewBox="0 0 10 10" fill="none">
+                <path d="M2 5l2.5 2.5L8 3" stroke="#C9A84C" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </span>
+            <span>Proprietary risk engine monitors 200+ market signals in real time to rebalance your portfolio proactively.</span>
+          </li>
+          <li>
+            <span class="check" aria-hidden="true">
+              <svg width="10" height="10" viewBox="0 0 10 10" fill="none">
+                <path d="M2 5l2.5 2.5L8 3" stroke="#C9A84C" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </span>
+            <span>Full fee transparency — no hidden commissions, no performance clawbacks, no surprises.</span>
+          </li>
+          <li>
+            <span class="check" aria-hidden="true">
+              <svg width="10" height="10" viewBox="0 0 10 10" fill="none">
+                <path d="M2 5l2.5 2.5L8 3" stroke="#C9A84C" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </span>
+            <span>Regulated by the relevant financial authorities and independently audited on a semi-annual basis.</span>
+          </li>
+          <li>
+            <span class="check" aria-hidden="true">
+              <svg width="10" height="10" viewBox="0 0 10 10" fill="none">
+                <path d="M2 5l2.5 2.5L8 3" stroke="#C9A84C" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </span>
+            <span>Client assets held in segregated custody at Tier-1 global banking institutions.</span>
+          </li>
+        </ul>
+        <a href="#products" class="btn-primary">View Our Products</a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ── TESTIMONIALS ────────────────────────────────── -->
+  <section id="testimonials" class="testimonials" aria-labelledby="testi-heading">
+    <div class="container">
+      <div class="testimonials-header">
+        <span class="eyebrow">Client Stories</span>
+        <h2 class="section-title" id="testi-heading">Trusted by investors<br/>around the world.</h2>
+      </div>
+
+      <div class="testi-grid">
+
+        <article class="testi-card" aria-label="Testimonial from David Lim">
+          <div class="stars" aria-label="5 out of 5 stars">
+            <svg class="star" viewBox="0 0 20 20" aria-hidden="true"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+            <svg class="star" viewBox="0 0 20 20" aria-hidden="true"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+            <svg class="star" viewBox="0 0 20 20" aria-hidden="true"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+            <svg class="star" viewBox="0 0 20 20" aria-hidden="true"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+            <svg class="star" viewBox="0 0 20 20" aria-hidden="true"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+          </div>
+          <p class="testi-text">
+            "GCADLab's Apex Portfolio delivered 21% in our first full year — far beyond my expectations. What impressed me most was the proactive communication during volatility."
+          </p>
+          <div class="testi-author">
+            <img
+              class="testi-avatar"
+              src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&q=75&auto=format&fit=crop&crop=face"
+              alt="Portrait of David Lim"
+              loading="lazy"
+              width="44" height="44"
+            />
+            <div>
+              <span class="testi-name">David Lim</span>
+              <span class="testi-role">Entrepreneur, Singapore</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="testi-card" aria-label="Testimonial from Sarah Thornton">
+          <div class="stars" aria-label="5 out of 5 stars">
+            <svg class="star" viewBox="0 0 20 20" aria-hidden="true"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+            <svg class="star" viewBox="0 0 20 20" aria-hidden="true"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+            <svg class="star" viewBox="0 0 20 20" aria-hidden="true"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+            <svg class="star" viewBox="0 0 20 20" aria-hidden="true"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+            <svg class="star" viewBox="0 0 20 20" aria-hidden="true"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+          </div>
+          <p class="testi-text">
+            "As a retiree, income certainty is everything. Preserve Income has paid exactly as promised every quarter for four years. The transparency is unlike anything I've experienced elsewhere."
+          </p>
+          <div class="testi-author">
+            <img
+              class="testi-avatar"
+              src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&q=75&auto=format&fit=crop&crop=face"
+              alt="Portrait of Sarah Thornton"
+              loading="lazy"
+              width="44" height="44"
+            />
+            <div>
+              <span class="testi-name">Sarah Thornton</span>
+              <span class="testi-role">Retired Executive, London</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="testi-card" aria-label="Testimonial from Rajan Mehta">
+          <div class="stars" aria-label="5 out of 5 stars">
+            <svg class="star" viewBox="0 0 20 20" aria-hidden="true"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+            <svg class="star" viewBox="0 0 20 20" aria-hidden="true"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+            <svg class="star" viewBox="0 0 20 20" aria-hidden="true"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+            <svg class="star" viewBox="0 0 20 20" aria-hidden="true"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+            <svg class="star" viewBox="0 0 20 20" aria-hidden="true"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+          </div>
+          <p class="testi-text">
+            "Alpha Alternatives opened doors I didn't think existed for non-institutional investors. The team's due diligence process is exceptional and their communication is second to none."
+          </p>
+          <div class="testi-author">
+            <img
+              class="testi-avatar"
+              src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&q=75&auto=format&fit=crop&crop=face"
+              alt="Portrait of Rajan Mehta"
+              loading="lazy"
+              width="44" height="44"
+            />
+            <div>
+              <span class="testi-name">Rajan Mehta</span>
+              <span class="testi-role">Family Office Principal, Dubai</span>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ── CTA SECTION ─────────────────────────────────── -->
+  <section id="contact" class="cta-section" aria-labelledby="cta-heading">
+    <div class="container">
+      <span class="eyebrow">Begin Today</span>
+      <h2 class="cta-title" id="cta-heading">Ready to <em>grow</em> your wealth with confidence?</h2>
+      <p class="cta-sub">Schedule a complimentary 30-minute consultation with one of our senior wealth strategists. No obligations, no pressure — just clarity.</p>
+      <div class="cta-actions">
+        <a href="mailto:hello@gcadlab.shop" class="btn-primary">
+          Book a Consultation
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+            <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </a>
+        <a href="#products" class="btn-outline">View Products</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── FOOTER ──────────────────────────────────────── -->
+  <footer aria-label="Site footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="/" class="logo" aria-label="GCADLab Home">GCAD<span>Lab</span></a>
+          <p class="footer-desc">
+            Intelligent wealth management for investors who demand more. Institutional expertise, personal commitment.
+          </p>
+        </div>
+        <div class="footer-col">
+          <h4>Products</h4>
+          <ul class="footer-links">
+            <li><a href="#products">Apex Portfolio</a></li>
+            <li><a href="#products">Preserve Income</a></li>
+            <li><a href="#products">Alpha Alternatives</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Company</h4>
+          <ul class="footer-links">
+            <li><a href="#about">About Us</a></li>
+            <li><a href="#how">How It Works</a></li>
+            <li><a href="#testimonials">Client Stories</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Contact</h4>
+          <ul class="footer-links">
+            <li><a href="mailto:hello@gcadlab.shop">hello@gcadlab.shop</a></li>
+            <li><a href="https://gcadlab.shop">gcadlab.shop</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p class="footer-copy">&copy; 2025 GCADLab Financial. All rights reserved.</p>
+        <nav class="footer-legal" aria-label="Legal links">
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms of Service</a>
+          <a href="#">Risk Disclosure</a>
+        </nav>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ── SCRIPTS ─────────────────────────────────────── -->
+  <script>
+    // Animated stat counters
+    function animateCounters() {
+      const items = document.querySelectorAll('.stat-value[data-target]');
+      items.forEach(el => {
+        const target = parseFloat(el.dataset.target);
+        const suffix = el.dataset.suffix || '';
+        const isDecimal = target % 1 !== 0;
+        const duration = 1400;
+        const step = 16;
+        const steps = duration / step;
+        let current = 0;
+        const increment = target / steps;
+        const timer = setInterval(() => {
+          current += increment;
+          if (current >= target) {
+            current = target;
+            clearInterval(timer);
+          }
+          el.textContent = (isDecimal ? current.toFixed(1) : Math.floor(current).toLocaleString()) + suffix;
+        }, step);
+      });
+    }
+
+    // Trigger on visibility
+    const heroStats = document.querySelector('.hero-stats');
+    if (heroStats && 'IntersectionObserver' in window) {
+      const obs = new IntersectionObserver(entries => {
+        if (entries[0].isIntersecting) { animateCounters(); obs.disconnect(); }
+      }, { threshold: 0.5 });
+      obs.observe(heroStats);
+    } else {
+      animateCounters();
+    }
+  </script>
+
 </body>
 </html>
