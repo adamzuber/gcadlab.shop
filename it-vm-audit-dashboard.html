@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#0f172a">
+<title>VM Audit Scope Dashboard</title>
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+html[data-theme="dark"] { color-scheme: dark; }
+:root {
+  --bg: #f1f5f9;
+  --surface: #ffffff;
+  --surface-alt: #f8fafc;
+  --border: #e2e8f0;
+  --text: #0f172a;
+  --text-secondary: #475569;
+  --text-muted: #94a3b8;
+  --accent: #2563eb;
+  --accent-hover: #1d4ed8;
+  --shadow: 0 1px 3px rgba(0,0,0,.06), 0 1px 2px rgba(0,0,0,.04);
+  --shadow-lg: 0 10px 25px rgba(0,0,0,.08);
+  --radius: 10px;
+  --radius-sm: 6px;
+  --transition: .2s ease;
+}
+html[data-theme="dark"] {
+  --bg: #0f172a;
+  --surface: #1e293b;
+  --surface-alt: #172033;
+  --border: #334155;
+  --text: #f1f5f9;
+  --text-secondary: #94a3b8;
+  --text-muted: #64748b;
+  --accent: #60a5fa;
+  --accent-hover: #93bbfc;
+  --shadow: 0 1px 3px rgba(0,0,0,.3), 0 1px 2px rgba(0,0,0,.2);
+}
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+  min-height: 100vh;
+}
+.skip-link { position: absolute; top: -100px; left: 16px; padding: 8px 16px; background: var(--accent); color: #fff; border-radius: var(--radius-sm); z-index: 1000; font-size: 14px; text-decoration: none; }
+.skip-link:focus { top: 16px; }
+.app { max-width: 1360px; margin: 0 auto; padding: 0 20px 40px; }
+
+/* Header */
+.header { padding: 28px 0 20px; border-bottom: 1px solid var(--border); display: flex; align-items: flex-start; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+.header-left h1 { font-size: 26px; font-weight: 700; letter-spacing: -.4px; text-wrap: balance; }
+.header-left .meta { display: flex; gap: 20px; flex-wrap: wrap; margin-top: 6px; font-size: 13px; color: var(--text-secondary); }
+.badge { display: inline-flex; align-items: center; gap: 4px; padding: 2px 10px; border-radius: 20px; font-size: 12px; font-weight: 600; }
+.badge-light { background: #dbeafe; color: #1e40af; }
+html[data-theme="dark"] .badge-light { background: #1e3a5f; color: #93bbfc; }
+.theme-toggle { background: var(--surface); border: 1px solid var(--border); color: var(--text); width: 40px; height: 40px; border-radius: var(--radius-sm); cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 18px; transition: background var(--transition), border-color var(--transition); flex-shrink: 0; }
+.theme-toggle:hover { background: var(--surface-alt); }
+.theme-toggle:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+/* Objective */
+.objective-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 18px 22px; margin: 20px 0; box-shadow: var(--shadow); }
+.objective-card h2 { font-size: 13px; text-transform: uppercase; letter-spacing: .6px; color: var(--text-muted); margin-bottom: 6px; }
+.objective-card p { font-size: 15px; color: var(--text-secondary); }
+
+/* Frameworks */
+.fw-row { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 10px; }
+.fw-chip { font-size: 12px; padding: 4px 12px; background: var(--surface-alt); border: 1px solid var(--border); border-radius: 20px; color: var(--text-secondary); }
+
+/* Toolbar */
+.toolbar { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; margin: 20px 0 16px; }
+.search-box { flex: 1; min-width: 200px; position: relative; }
+.search-box input { width: 100%; padding: 10px 14px 10px 38px; background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-sm); color: var(--text); font-size: 14px; outline: none; transition: border-color var(--transition); }
+.search-box input:focus { border-color: var(--accent); }
+.search-box input:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.search-box .icon { position: absolute; left: 12px; top: 50%; transform: translateY(-50%); color: var(--text-muted); font-size: 15px; pointer-events: none; }
+.domain-filter select { padding: 10px 14px; background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-sm); color: var(--text); font-size: 14px; cursor: pointer; outline: none; }
+.domain-filter select:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+/* Stats */
+.stats-bar { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 20px; }
+.stat-chip { background: var(--surface); border: 1px solid var(--border); border-radius: 20px; padding: 6px 16px; font-size: 13px; display: flex; align-items: center; gap: 6px; box-shadow: var(--shadow); font-variant-numeric: tabular-nums; }
+.stat-chip strong { font-weight: 600; }
+
+/* Domain section */
+.domain-section { margin-bottom: 28px; }
+.domain-header { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 14px 18px; background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); cursor: pointer; box-shadow: var(--shadow); transition: background var(--transition); -webkit-tap-highlight-color: transparent; touch-action: manipulation; }
+.domain-header:hover { background: var(--surface-alt); }
+.domain-header:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.domain-header .left { display: flex; align-items: center; gap: 12px; flex: 1; }
+.domain-header .domain-badge { display: inline-flex; align-items: center; justify-content: center; width: 32px; height: 32px; border-radius: 8px; font-size: 16px; font-weight: 700; flex-shrink: 0; }
+.domain-header .domain-info { flex: 1; }
+.domain-header h3 { font-size: 16px; font-weight: 600; }
+.domain-header .obj-text { font-size: 12px; color: var(--text-muted); margin-top: 2px; line-height: 1.4; }
+.domain-header .count { font-size: 13px; color: var(--text-muted); white-space: nowrap; font-variant-numeric: tabular-nums; }
+.domain-header .chevron { color: var(--text-muted); font-size: 18px; transition: transform var(--transition); flex-shrink: 0; }
+.domain-section.collapsed .chevron { transform: rotate(-90deg); }
+.domain-section.collapsed .domain-body { display: none; }
+.domain-body { margin-top: 8px; }
+.controls-grid { display: grid; gap: 8px; }
+
+/* Control card */
+.control-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 14px 18px; cursor: pointer; transition: border-color var(--transition), box-shadow var(--transition); -webkit-tap-highlight-color: transparent; touch-action: manipulation; }
+.control-card:hover { border-color: var(--accent); }
+.control-card:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.control-card .top { display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap; }
+.control-card .code { font-family: 'SF Mono', 'Cascadia Code', 'Consolas', monospace; font-size: 12px; font-weight: 600; padding: 1px 8px; border-radius: 4px; background: var(--surface-alt); color: var(--accent); flex-shrink: 0; }
+.control-card .ctrl-name { font-size: 14px; font-weight: 600; flex: 1; }
+.control-card .risk-tag { font-size: 11px; font-weight: 700; padding: 2px 10px; border-radius: 10px; text-transform: uppercase; letter-spacing: .4px; flex-shrink: 0; }
+.risk-high { background: #fee2e2; color: #dc2626; }
+.risk-medium { background: #fef3c7; color: #d97706; }
+.risk-low { background: #d1fae5; color: #059669; }
+html[data-theme="dark"] .risk-high { background: #3b1c1c; color: #fca5a5; }
+html[data-theme="dark"] .risk-medium { background: #3b2e0e; color: #fcd34d; }
+html[data-theme="dark"] .risk-low { background: #1a3f33; color: #6ee7b7; }
+.control-card .desc { margin-top: 6px; font-size: 13px; color: var(--text-secondary); line-height: 1.5; }
+.control-card .extra { display: none; margin-top: 12px; padding-top: 12px; border-top: 1px solid var(--border); }
+.control-card.open .extra { display: block; }
+.extra-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+@media (max-width: 640px) { .extra-grid { grid-template-columns: 1fr; } }
+.extra-col h4 { font-size: 11px; text-transform: uppercase; letter-spacing: .5px; color: var(--text-muted); margin-bottom: 6px; }
+.extra-col ul { list-style: none; padding: 0; }
+.extra-col ul li { padding: 3px 0 3px 16px; position: relative; font-size: 13px; color: var(--text-secondary); line-height: 1.5; }
+.extra-col ul li::before { content: ''; position: absolute; left: 1px; top: 11px; width: 5px; height: 5px; border-radius: 50%; background: var(--text-muted); }
+.extra-col ul li.evidence::before { background: var(--accent); }
+
+/* Info sections */
+.info-section { margin: 32px 0; }
+.info-section h2 { font-size: 18px; font-weight: 600; margin-bottom: 14px; }
+.info-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 14px; }
+.info-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 18px 20px; box-shadow: var(--shadow); }
+.info-card h3 { font-size: 14px; font-weight: 600; margin-bottom: 10px; color: var(--accent); }
+.info-card ul { list-style: none; padding: 0; }
+.info-card ul li { padding: 4px 0 4px 18px; position: relative; font-size: 13px; color: var(--text-secondary); line-height: 1.5; }
+.info-card ul li::before { content: ''; position: absolute; left: 1px; top: 13px; width: 5px; height: 5px; border-radius: 50%; background: var(--accent); }
+
+/* Scope card */
+.scope-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 18px 22px; box-shadow: var(--shadow); }
+.scope-card h3 { font-size: 14px; font-weight: 600; margin-bottom: 8px; }
+.scope-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+@media (max-width: 640px) { .scope-grid { grid-template-columns: 1fr; } }
+.scope-col { }
+.scope-col .scope-label { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: .5px; margin-bottom: 8px; display: block; }
+.scope-in .scope-label { color: #059669; }
+.scope-out .scope-label { color: #dc2626; }
+.scope-col ul { list-style: none; padding: 0; }
+.scope-col ul li { padding: 3px 0 3px 16px; position: relative; font-size: 13px; color: var(--text-secondary); line-height: 1.5; }
+.scope-col ul li::before { content: ''; position: absolute; left: 1px; top: 11px; width: 5px; height: 5px; border-radius: 50%; }
+.scope-in ul li::before { background: #059669; }
+.scope-out ul li::before { background: #dc2626; }
+
+/* Stakeholder tags */
+.stakeholder-row { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 8px; }
+.stakeholder-tag { font-size: 12px; padding: 4px 14px; background: var(--surface); border: 1px solid var(--border); border-radius: 20px; color: var(--text-secondary); }
+
+/* Timeline */
+.timeline { display: flex; gap: 0; margin-top: 10px; border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; }
+.timeline-phase { flex: 1; padding: 14px 16px; text-align: center; position: relative; }
+.timeline-phase + .timeline-phase { border-left: 1px solid var(--border); }
+.timeline-phase .phase-num { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: .5px; color: var(--accent); margin-bottom: 2px; }
+.timeline-phase .phase-name { font-size: 13px; font-weight: 600; }
+.timeline-phase .phase-dur { font-size: 12px; color: var(--text-muted); margin-top: 2px; }
+@media (max-width: 640px) { .timeline { flex-direction: column; } .timeline-phase + .timeline-phase { border-left: none; border-top: 1px solid var(--border); } }
+
+/* Rating scale */
+.rating-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 12px; margin-top: 10px; }
+.rating-card { padding: 14px 16px; border-radius: var(--radius-sm); border: 1px solid var(--border); font-size: 13px; }
+.rating-card .label { font-weight: 700; text-transform: uppercase; letter-spacing: .5px; margin-bottom: 4px; }
+.rating-card .def { color: var(--text-secondary); line-height: 1.5; }
+
+/* Filters row under toolbar */
+.filter-row { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 16px; }
+.risk-filter-btn { padding: 5px 14px; border-radius: 20px; border: 1px solid var(--border); background: var(--surface); font-size: 12px; font-weight: 600; cursor: pointer; transition: all var(--transition); -webkit-tap-highlight-color: transparent; touch-action: manipulation; color: var(--text-secondary); }
+.risk-filter-btn:hover { border-color: var(--accent); }
+.risk-filter-btn:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.risk-filter-btn.active { background: var(--accent); color: #fff; border-color: var(--accent); }
+
+.no-results { text-align: center; padding: 48px 20px; color: var(--text-muted); font-size: 15px; }
+
+/* Footer */
+.footer { margin-top: 40px; padding-top: 16px; border-top: 1px solid var(--border); text-align: center; font-size: 12px; color: var(--text-muted); }
+
+@media (max-width: 640px) {
+  .app { padding: 0 12px 24px; }
+  .header-left h1 { font-size: 20px; }
+  .domain-header .domain-badge { width: 26px; height: 26px; font-size: 13px; }
+  .domain-header h3 { font-size: 14px; }
+  .domain-header .obj-text { display: none; }
+  .stats-bar { gap: 8px; }
+  .stat-chip { font-size: 12px; padding: 4px 12px; }
+}
+@media (prefers-reduced-motion: reduce) { *, *::before, *::after { transition-duration: 0ms !important; animation-duration: 0ms !important; } }
+</style>
+</head>
+<body>
+<a class="skip-link" href="#main-content">Skip to main content</a>
+<div class="app" id="main-content" role="main">
+  <header class="header">
+    <div class="header-left">
+      <h1>&#x1F50D; VM Audit Scope</h1>
+      <div class="meta">
+        <span id="audit-title"></span>
+        <span id="audit-ref"></span>
+        <span id="audit-period"></span>
+        <span class="badge badge-light" id="total-badge">0 controls</span>
+      </div>
+    </div>
+    <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode">&#x263E;</button>
+  </header>
+
+  <div class="objective-card">
+    <h2>Objective</h2>
+    <p id="objective-text"></p>
+    <div class="fw-row" id="fw-row"></div>
+  </div>
+
+  <!-- Scope -->
+  <div class="scope-card" style="margin-bottom:20px">
+    <h3>Audit Scope</h3>
+    <div class="scope-grid">
+      <div class="scope-col scope-in">
+        <span class="scope-label">&#x2713; In Scope</span>
+        <ul id="in-scope-list"></ul>
+      </div>
+      <div class="scope-col scope-out">
+        <span class="scope-label">&#x2717; Out of Scope</span>
+        <ul id="out-scope-list"></ul>
+      </div>
+    </div>
+    <div id="scope-locations" style="margin-top:12px;font-size:13px;color:var(--text-secondary)"></div>
+    <div id="scope-exclusions" style="margin-top:6px;font-size:13px;color:var(--text-secondary);font-style:italic"></div>
+  </div>
+
+  <!-- Toolbar -->
+  <div class="toolbar">
+    <div class="search-box">
+      <span class="icon" aria-hidden="true">&#x2315;</span>
+      <input type="text" id="search-input" placeholder="Search controls, domains, codes&hellip;" autocomplete="off" spellcheck="false">
+    </div>
+    <div class="domain-filter">
+      <select id="domain-select" aria-label="Filter by domain">
+        <option value="all">All domains</option>
+      </select>
+    </div>
+  </div>
+  <div class="filter-row" id="risk-filters"></div>
+
+  <div class="stats-bar" id="stats-bar" aria-live="polite"></div>
+  <div id="dashboard-content"></div>
+
+  <!-- Methodology -->
+  <div class="info-section">
+    <h2>Audit Methodology</h2>
+    <div class="info-grid" id="methodology-grid"></div>
+  </div>
+
+  <!-- Timeline -->
+  <div class="info-section">
+    <h2>Timeline</h2>
+    <div class="timeline" id="timeline"></div>
+  </div>
+
+  <!-- Stakeholders -->
+  <div class="info-section">
+    <h2>Key Stakeholders</h2>
+    <div class="stakeholder-row" id="stakeholder-row"></div>
+  </div>
+
+  <!-- Deliverables -->
+  <div class="info-section">
+    <h2>Deliverables</h2>
+    <div class="info-grid" id="deliverables-grid"></div>
+  </div>
+
+  <!-- Rating Scale -->
+  <div class="info-section">
+    <h2>Rating Scale Definition</h2>
+    <div class="rating-grid" id="rating-grid"></div>
+  </div>
+
+  <footer class="footer">
+    Generated from <code>it-vm-audit-scope.json</code> &mdash; for audit planning purposes only.
+  </footer>
+</div>
+
+<script>
+(function() {
+  const DATA = {"audit_title":"IT Vulnerability Management Audit","audit_reference":"AUD-VM-2026-XX","audit_objective":"To assess the design and operating effectiveness of the organization's IT Vulnerability Management program, including asset inventory, vulnerability identification, risk-based prioritization, patching, system hardening, exception handling, and governance reporting, to determine whether vulnerabilities are identified and remediated within acceptable timeframes and residual risk is appropriately managed.","audit_period_under_review":"Specify period, e.g. 1 Jan 2026 - 30 Jun 2026","framework_references":["NIST SP 800-40 Rev.4 - Guide to Enterprise Patch Management Planning","NIST SP 800-53 Rev.5 - RA-5 (Vulnerability Monitoring and Scanning), SI-2 (Flaw Remediation), CM-6 (Configuration Settings)","CIS Critical Security Controls v8 - Control 4 (Secure Configuration), Control 7 (Continuous Vulnerability Management)","ISO/IEC 27001:2022 Annex A - A.8.8 (Management of Technical Vulnerabilities), A.8.9 (Configuration Management), A.5.9 (Inventory of Assets)","PCI DSS v4.0 - Requirement 6 (Develop and Maintain Secure Systems), Requirement 11 (Test Security of Systems Regularly)"],"scope":{"in_scope":["Servers (on-premises and cloud-hosted: IaaS/PaaS workloads)","Endpoints (laptops, desktops, virtual desktops)","Network devices (routers, switches, firewalls, load balancers, wireless access points)","Operating systems (Windows, Linux, Unix)","Databases and middleware","Web applications and APIs exposed internally or externally","Container images and orchestration platforms (e.g. Docker, Kubernetes)","Third-party/vendor-managed infrastructure where the organization retains contractual oversight","Vulnerability management tooling and processes (scanners, patch management systems, CMDB/asset inventory)"],"out_of_scope":["Physical security controls (covered under separate physical security audit)","Application source code review / SAST-DAST findings (covered under separate secure SDLC audit)","Business continuity and disaster recovery testing","End-user security awareness training effectiveness"],"locations":["Specify data centers, cloud regions, and office locations included in scope"],"scope_exclusions_rationale":"Document any exclusions and the rationale, e.g. systems decommissioned during the period, or environments covered by a separate prior audit."},"audit_methodology":["Walkthroughs and interviews with IT Security, Infrastructure, and Operations teams","Review of policies, standards, and procedures related to vulnerability management","Inspection of asset inventory/CMDB records and reconciliation against network discovery scans","Review of vulnerability scan reports, remediation tickets, and patch deployment logs","Sample-based testing of vulnerability closure timelines against defined SLAs","Configuration review of a sample of servers/endpoints against approved hardening baselines","Re-performance: independent vulnerability scan of a sample subset of in-scope assets","Review of exception/risk acceptance register and approval evidence","Review of governance reporting (metrics, KPIs/KRIs) presented to management/risk committees"],"control_domains":[{"domain_id":"VM-AST","domain_name":"IT Asset and Software Inventory Management","control_objective":"Ensure a complete, accurate, and current inventory of hardware, software, and network assets exists to provide the foundation for effective vulnerability identification and remediation.","controls":[{"control_id":"VM-AST-01","control_name":"Asset Inventory Completeness","description":"A centralized, automatically updated asset inventory (CMDB) exists covering all servers, endpoints, network devices, and cloud resources in scope.","test_procedures":["Obtain the current asset inventory/CMDB export","Perform independent network discovery/scan and reconcile discovered assets against the CMDB","Investigate and quantify any unregistered (rogue) assets identified","Assess frequency and automation level of inventory refresh"],"evidence_required":["CMDB export with timestamps","Discovery/reconciliation scan results","Asset management policy/procedure document"],"risk_rating":"High"},{"control_id":"VM-AST-02","control_name":"Software and License Inventory","description":"Inventory of installed software, versions, and end-of-life/end-of-support status is maintained to identify unsupported or vulnerable software.","test_procedures":["Review software inventory tool output for a sample of assets","Identify software versions that are end-of-life (EOL) or end-of-support (EOS)","Confirm a process exists to track and remediate/replace EOL software"],"evidence_required":["Software inventory reports","EOL/EOS tracking register"],"risk_rating":"Medium"},{"control_id":"VM-AST-03","control_name":"Asset Ownership and Classification","description":"Each asset has a designated owner and criticality/data classification to support risk-based prioritization of vulnerabilities.","test_procedures":["Sample assets and verify owner and criticality fields are populated and accurate","Confirm classification methodology aligns with data classification policy"],"evidence_required":["Asset ownership/classification records","Data classification policy"],"risk_rating":"Medium"}],"__color":"#dbeafe"},{"domain_id":"VM-VAS","domain_name":"Vulnerability Assessment and Scanning","control_objective":"Ensure vulnerabilities across the IT environment are identified on a regular, comprehensive basis through authenticated scanning, penetration testing, and threat intelligence integration.","controls":[{"control_id":"VM-VAS-01","control_name":"Scanning Coverage and Frequency","description":"Vulnerability scans (authenticated, where feasible) are performed against all in-scope assets at a defined minimum frequency (e.g. weekly internal, monthly external, quarterly for less critical segments).","test_procedures":["Obtain the vulnerability scanning policy/schedule","Review scan logs/scheduler configuration for the audit period","Reconcile scanned asset list against the full asset inventory to assess coverage percentage","Confirm scans are authenticated/credentialed where applicable"],"evidence_required":["Scan schedule configuration","Scan execution logs","Coverage reconciliation report"],"risk_rating":"High"},{"control_id":"VM-VAS-02","control_name":"External and Internal Penetration Testing","description":"Independent penetration testing is performed at least annually (or per regulatory requirement) and after significant infrastructure or application changes.","test_procedures":["Obtain most recent penetration test report(s) and statement of work","Verify tester independence/qualifications","Confirm findings were tracked through to remediation"],"evidence_required":["Penetration test reports","Remediation tracking for pen test findings"],"risk_rating":"High"},{"control_id":"VM-VAS-03","control_name":"Scan Tool Configuration and Accuracy","description":"Vulnerability scanning tools are properly licensed, updated with current vulnerability signatures/plugins, and tuned to minimize false positives/negatives.","test_procedures":["Confirm plugin/signature database update frequency","Review false positive/negative rate management process","Confirm scanner credentials have appropriate (least-privilege) access"],"evidence_required":["Scanner configuration screenshots/export","Signature update logs"],"risk_rating":"Medium"},{"control_id":"VM-VAS-04","control_name":"Threat Intelligence and Zero-Day Monitoring","description":"A process exists to ingest threat intelligence feeds and vendor security advisories to identify and respond to emerging/zero-day vulnerabilities outside the normal scan cycle.","test_procedures":["Review threat intelligence sources subscribed to","Sample recent critical CVEs/advisories and trace organizational response/assessment","Confirm emergency assessment procedure for zero-day disclosures"],"evidence_required":["Threat intel feed subscriptions","Emergency response procedure","Sample advisory response tickets"],"risk_rating":"Medium"}],"__color":"#fce7f3"},{"domain_id":"VM-PAT","domain_name":"Patch Management","control_objective":"Ensure security patches are identified, tested, and deployed across the environment within risk-based timeframes to remediate known vulnerabilities.","controls":[{"control_id":"VM-PAT-01","control_name":"Patch Management Policy and SLAs","description":"A formal patch management policy defines remediation SLAs by severity/criticality (e.g. Critical: 7-15 days, High: 30 days, Medium: 60-90 days).","test_procedures":["Obtain and review the patch management policy","Confirm SLAs are risk-based and approved by management","Compare policy SLAs to industry good practice/regulatory requirements"],"evidence_required":["Patch management policy document","Management approval/sign-off evidence"],"risk_rating":"High"},{"control_id":"VM-PAT-02","control_name":"Patch Deployment Cycle Effectiveness","description":"Patches are tested in a non-production environment and deployed to production through a controlled, scheduled release process (including emergency/out-of-band patching for critical vulnerabilities).","test_procedures":["Review patch testing and change management records for a sample of patch cycles","Confirm rollback procedures exist and were tested where applicable","Review emergency patching process and sample emergency patch tickets"],"evidence_required":["Change management tickets for patch deployments","Patch testing sign-offs","Emergency patch records"],"risk_rating":"High"},{"control_id":"VM-PAT-03","control_name":"SLA Compliance and Aging Analysis","description":"Open vulnerabilities/patches are tracked, and aging analysis shows remediation within defined SLAs, with overdue items escalated.","test_procedures":["Obtain vulnerability remediation tracking data for the audit period","Recalculate SLA compliance percentage and aging buckets (0-30, 31-60, 61-90, 90+ days)","Sample overdue items and verify escalation occurred per policy"],"evidence_required":["Vulnerability/patch remediation tracker export","Escalation/exception correspondence"],"risk_rating":"High"},{"control_id":"VM-PAT-04","control_name":"Coverage of Unsupported/Legacy Systems","description":"Systems that can no longer receive vendor patches (legacy/EOL) have compensating controls (e.g. network segmentation, virtual patching) documented and approved.","test_procedures":["Identify legacy/unsupported systems from the EOL register","Verify compensating controls are documented, implemented, and risk-accepted by appropriate authority"],"evidence_required":["Legacy system register","Compensating control documentation","Risk acceptance approvals"],"risk_rating":"High"}],"__color":"#d1fae5"},{"domain_id":"VM-HRD","domain_name":"System and Configuration Hardening","control_objective":"Ensure systems are configured according to approved secure baselines to reduce the attack surface and limit exploitability of vulnerabilities.","controls":[{"control_id":"VM-HRD-01","control_name":"Hardening Baseline Standards","description":"Documented hardening baselines/standards exist for each major platform (OS, database, network device, cloud service) based on recognized benchmarks (e.g. CIS Benchmarks, vendor security guides).","test_procedures":["Obtain hardening standards for each platform type in scope","Confirm standards are based on/mapped to recognized benchmarks","Confirm standards are formally approved and version-controlled"],"evidence_required":["Hardening baseline documents per platform","Approval/version history"],"risk_rating":"High"},{"control_id":"VM-HRD-02","control_name":"Baseline Compliance Monitoring","description":"Automated configuration compliance scanning is performed against hardening baselines, with deviations tracked and remediated.","test_procedures":["Review configuration compliance scan tool reports for a sample of assets","Recalculate compliance percentage against the approved baseline","Sample non-compliant findings and trace to remediation or approved exception"],"evidence_required":["Configuration compliance scan reports","Remediation/exception tracking"],"risk_rating":"High"},{"control_id":"VM-HRD-03","control_name":"Secure Build/Golden Image Process","description":"New systems are provisioned from hardened golden images/templates rather than default vendor configurations, including for cloud and container images.","test_procedures":["Review golden image/template build process documentation","Sample recently provisioned assets and verify they were built from the approved hardened image","Confirm golden images are periodically rebuilt/patched"],"evidence_required":["Golden image build documentation","Image version/patch history","Sample provisioning records"],"risk_rating":"Medium"},{"control_id":"VM-HRD-04","control_name":"Unnecessary Services, Ports, and Default Accounts","description":"Unnecessary services, open ports, default/guest accounts, and default credentials are disabled or removed as part of hardening.","test_procedures":["Review a sample of system configuration exports for unnecessary services/ports","Test for presence of default accounts/credentials on a sample of systems","Confirm findings are tracked for remediation"],"evidence_required":["System configuration exports","Default account testing results"],"risk_rating":"Medium"}],"__color":"#fef3c7"},{"domain_id":"VM-RPR","domain_name":"Risk Prioritization and Remediation","control_objective":"Ensure identified vulnerabilities are prioritized based on risk (severity, exploitability, asset criticality, threat intelligence) and remediated accordingly.","controls":[{"control_id":"VM-RPR-01","control_name":"Risk-Based Severity Scoring","description":"Vulnerabilities are scored using a consistent methodology (e.g. CVSS) and adjusted for contextual factors such as asset criticality, exploit availability (e.g. EPSS, known exploited vulnerabilities), and exposure (internet-facing vs internal).","test_procedures":["Review the documented risk-scoring/prioritization methodology","Sample vulnerabilities and verify scoring/prioritization was applied consistently","Confirm internet-facing/critical assets receive expedited treatment"],"evidence_required":["Risk scoring methodology document","Sample vulnerability records with scoring rationale"],"risk_rating":"High"},{"control_id":"VM-RPR-02","control_name":"Remediation Workflow and Ticketing","description":"Identified vulnerabilities are automatically or systematically converted into tracked remediation tickets assigned to responsible owners with due dates.","test_procedures":["Review the vulnerability-to-ticket workflow/integration configuration","Sample tickets and confirm assignment, due dates, and status tracking","Confirm closure evidence (e.g. rescan confirmation) is required before ticket closure"],"evidence_required":["Ticketing system export","Closure/verification evidence for sampled tickets"],"risk_rating":"High"},{"control_id":"VM-RPR-03","control_name":"Remediation Verification (Rescanning)","description":"Remediated vulnerabilities are verified through rescanning or other validation before closure.","test_procedures":["Sample closed vulnerability tickets and confirm rescan/validation evidence is attached","Independently rescan a sample of recently 'remediated' assets to confirm closure"],"evidence_required":["Rescan reports","Independent verification scan results"],"risk_rating":"High"}],"__color":"#e0e7ff"},{"domain_id":"VM-EXC","domain_name":"Exception and Risk Acceptance Management","control_objective":"Ensure deviations from patching/hardening requirements are formally documented, risk-assessed, time-bound, and approved by appropriate risk owners.","controls":[{"control_id":"VM-EXC-01","control_name":"Exception Request and Approval Process","description":"A formal process requires risk assessment, compensating controls, expiration date, and approval by an appropriately senior risk owner for any exception to patching/hardening SLAs.","test_procedures":["Obtain the exception/risk acceptance policy and register","Sample exceptions and verify required approvals, compensating controls, and expiration dates are documented","Identify any expired exceptions still in effect without re-approval"],"evidence_required":["Exception register","Approval workflow evidence","Compensating control documentation"],"risk_rating":"High"},{"control_id":"VM-EXC-02","control_name":"Periodic Review of Open Exceptions","description":"Open exceptions are periodically reviewed (e.g. quarterly) to confirm continued relevance and that compensating controls remain effective.","test_procedures":["Confirm review cadence is defined and adhered to","Sample periodic review evidence/minutes"],"evidence_required":["Review meeting minutes/sign-offs"],"risk_rating":"Medium"}],"__color":"#ede9fe"},{"domain_id":"VM-GOV","domain_name":"Governance, Roles, and Responsibilities","control_objective":"Ensure clear ownership, accountability, and oversight structures exist for the vulnerability management program.","controls":[{"control_id":"VM-GOV-01","control_name":"Policy and Standard Ownership","description":"Vulnerability management policy/standards are formally documented, approved by management, and reviewed/updated at least annually.","test_procedures":["Obtain policy document and review approval and last review dates","Confirm policy covers scope, roles, SLAs, and escalation"],"evidence_required":["Approved policy with version history"],"risk_rating":"Medium"},{"control_id":"VM-GOV-02","control_name":"Roles and Responsibilities (RACI)","description":"Roles and responsibilities across security, infrastructure, application, and business owners are clearly defined for scanning, remediation, and exception approval.","test_procedures":["Obtain RACI matrix or equivalent","Interview key stakeholders to confirm understanding and adherence to assigned responsibilities"],"evidence_required":["RACI matrix","Interview notes"],"risk_rating":"Medium"},{"control_id":"VM-GOV-03","control_name":"Resource Adequacy","description":"Sufficient skilled resources and budget are allocated to operate the vulnerability management program effectively.","test_procedures":["Review team structure, headcount, and relevant certifications","Assess backlog trends as an indicator of resource adequacy"],"evidence_required":["Org chart","Backlog trend reports"],"risk_rating":"Low"}],"__color":"#f3e8ff"},{"domain_id":"VM-RPT","domain_name":"Reporting, Metrics, and Continuous Monitoring","control_objective":"Ensure meaningful metrics on vulnerability management performance are tracked and reported to management and governance bodies to support informed decision-making.","controls":[{"control_id":"VM-RPT-01","control_name":"Key Risk/Performance Indicators","description":"KPIs/KRIs (e.g. mean time to remediate, SLA compliance %, open critical/high vulnerability count, scan coverage %) are defined, tracked, and reported on a regular cadence.","test_procedures":["Obtain sample management/board reports for the audit period","Recalculate a sample of reported metrics from underlying data and compare to reported figures","Assess whether trends and outliers are explained/actioned"],"evidence_required":["Management/committee reports","Underlying raw data for recalculation"],"risk_rating":"Medium"},{"control_id":"VM-RPT-02","control_name":"Escalation of Material Risk","description":"Critical/high-risk vulnerabilities exceeding SLA or representing significant exposure are escalated to senior management/risk committees in a timely manner.","test_procedures":["Sample critical overdue vulnerabilities and trace escalation evidence","Confirm escalation thresholds and recipients are formally defined"],"evidence_required":["Escalation procedure","Sample escalation communications"],"risk_rating":"High"}],"__color":"#ccfbf1"},{"domain_id":"VM-EXT","domain_name":"Third-Party, Cloud, and Specialized Environments","control_objective":"Ensure vulnerability management extends appropriately to cloud environments, vendor-managed systems, and specialized assets (OT/IoT) consistent with shared responsibility and contractual obligations.","controls":[{"control_id":"VM-EXT-01","control_name":"Cloud Shared Responsibility Coverage","description":"Vulnerability scanning and configuration assessment (e.g. CSPM) cover cloud-native resources, with clear delineation of provider vs. customer responsibility.","test_procedures":["Review cloud security posture management (CSPM) tool coverage and findings","Confirm shared responsibility matrix is documented for each cloud service model (IaaS/PaaS/SaaS)"],"evidence_required":["CSPM reports","Shared responsibility documentation"],"risk_rating":"Medium"},{"control_id":"VM-EXT-02","control_name":"Vendor/Third-Party System Oversight","description":"Contracts with vendors hosting or managing in-scope systems include vulnerability management and patching obligations, with evidence of compliance obtained periodically.","test_procedures":["Review sample vendor contracts/SLAs for security/patching clauses","Obtain and review periodic vendor compliance evidence (e.g. SOC 2, attestation, scan reports)"],"evidence_required":["Vendor contracts/SLAs","Vendor compliance attestations"],"risk_rating":"Medium"},{"control_id":"VM-EXT-03","control_name":"OT/IoT Vulnerability Management","description":"Operational technology and IoT devices, where in scope, have an appropriate vulnerability management approach accounting for safety and availability constraints (e.g. passive scanning, scheduled maintenance windows).","test_procedures":["Confirm inventory and risk assessment of OT/IoT assets","Review approach to vulnerability identification and patching given operational constraints"],"evidence_required":["OT/IoT asset inventory","OT-specific vulnerability management procedure"],"risk_rating":"Medium"}],"__color":"#ffe4e6"}],"key_stakeholders":["Chief Information Security Officer (CISO)","Head of IT Infrastructure/Operations","Vulnerability Management Team Lead","Patch Management Team","Cloud Security Team","IT Risk and Governance","Internal Audit Engagement Team"],"deliverables":["Audit planning memo and risk assessment","Detailed test plan/work program mapped to control domains above","Draft audit findings report with risk ratings and recommendations","Management response and remediation action plan with target dates","Final audit report issued to senior management and audit committee"],"timeline_phases":[{"phase":"Planning and Scoping","duration_estimate":"1-2 weeks"},{"phase":"Fieldwork and Testing","duration_estimate":"3-4 weeks"},{"phase":"Findings Validation and Draft Report","duration_estimate":"1-2 weeks"},{"phase":"Management Response and Final Reporting","duration_estimate":"1-2 weeks"}],"rating_scale_definition":{"High":"Control gap could lead to significant exploitable exposure, regulatory breach, or material business impact if not remediated promptly.","Medium":"Control gap increases risk exposure but with mitigating factors or limited immediate exploitability.","Low":"Control gap represents a minor inefficiency or best-practice deviation with limited risk impact."}};
+
+  /* Domain colors with dark variants */
+  const DOMAIN_COLORS = {
+    "IT Asset and Software Inventory Management": { bg: "#dbeafe", fg: "#1e40af", darkBg: "#1e3a5f", darkFg: "#93bbfc" },
+    "Vulnerability Assessment and Scanning": { bg: "#fce7f3", fg: "#9d174d", darkBg: "#4a1d3b", darkFg: "#f9a8d4" },
+    "Patch Management": { bg: "#d1fae5", fg: "#065f46", darkBg: "#1a3f33", darkFg: "#6ee7b7" },
+    "System and Configuration Hardening": { bg: "#fef3c7", fg: "#92400e", darkBg: "#42320e", darkFg: "#fcd34d" },
+    "Risk Prioritization and Remediation": { bg: "#e0e7ff", fg: "#3730a3", darkBg: "#25294a", darkFg: "#a5b4fc" },
+    "Exception and Risk Acceptance Management": { bg: "#ede9fe", fg: "#6b21a8", darkBg: "#35234a", darkFg: "#c084fc" },
+    "Governance, Roles, and Responsibilities": { bg: "#f3e8ff", fg: "#6b21a8", darkBg: "#35234a", darkFg: "#c084fc" },
+    "Reporting, Metrics, and Continuous Monitoring": { bg: "#ccfbf1", fg: "#0f766e", darkBg: "#13433b", darkFg: "#5eead4" },
+    "Third-Party, Cloud, and Specialized Environments": { bg: "#ffe4e6", fg: "#be123c", darkBg: "#4a1a24", darkFg: "#fda4af" }
+  };
+
+  function isDark() { return document.documentElement.getAttribute('data-theme') === 'dark'; }
+  function domainColor(domain) {
+    const c = DOMAIN_COLORS[domain] || { bg: "#e2e8f0", fg: "#475569", darkBg: "#2d3748", darkFg: "#a0aec0" };
+    return isDark() ? { bg: c.darkBg, fg: c.darkFg } : { bg: c.bg, fg: c.fg };
+  }
+  function esc(s) { const d = document.createElement('div'); d.textContent = s; return d.innerHTML; }
+
+  /* Init header */
+  document.getElementById('audit-title').textContent = DATA.audit_title;
+  document.getElementById('audit-ref').textContent = DATA.audit_reference;
+  document.getElementById('audit-period').textContent = DATA.audit_period_under_review;
+  document.getElementById('total-badge').textContent = DATA.control_domains.reduce((a,d) => a + d.controls.length, 0) + ' controls';
+  document.getElementById('objective-text').textContent = DATA.audit_objective;
+
+  /* Frameworks */
+  document.getElementById('fw-row').innerHTML = DATA.framework_references.map(f => `<span class="fw-chip">${esc(f)}</span>`).join('');
+
+  /* Scope */
+  document.getElementById('in-scope-list').innerHTML = DATA.scope.in_scope.map(s => `<li>${esc(s)}</li>`).join('');
+  document.getElementById('out-scope-list').innerHTML = DATA.scope.out_of_scope.map(s => `<li>${esc(s)}</li>`).join('');
+  const loc = DATA.scope.locations.join('; ');
+  document.getElementById('scope-locations').textContent = loc ? 'Locations: ' + loc : '';
+  document.getElementById('scope-exclusions').textContent = DATA.scope.scope_exclusions_rationale || '';
+
+  /* Domain filter */
+  const sel = document.getElementById('domain-select');
+  DATA.control_domains.forEach(d => {
+    const o = document.createElement('option');
+    o.value = d.domain_name; o.textContent = d.domain_name;
+    sel.appendChild(o);
+  });
+
+  /* Risk filter buttons */
+  const riskFiltersEl = document.getElementById('risk-filters');
+  const riskLevels = ['High', 'Medium', 'Low'];
+  riskFiltersEl.innerHTML = `<button class="risk-filter-btn active" data-risk="all">All</button>` +
+    riskLevels.map(r => `<button class="risk-filter-btn" data-risk="${r}">${r}</button>`).join('');
+
+  /* Methodology */
+  const methGrid = document.getElementById('methodology-grid');
+  const thirds = Math.ceil(DATA.audit_methodology.length / 3);
+  const groups = [];
+  for (let i = 0; i < DATA.audit_methodology.length; i += thirds) {
+    groups.push(DATA.audit_methodology.slice(i, i + thirds));
+  }
+  methGrid.innerHTML = groups.map((g, idx) => `
+    <div class="info-card">
+      <h3>Methodology ${idx + 1}</h3>
+      <ul>${g.map(i => `<li>${esc(i)}</li>`).join('')}</ul>
+    </div>
+  `).join('');
+
+  /* Timeline */
+  document.getElementById('timeline').innerHTML = DATA.timeline_phases.map((p, i) => `
+    <div class="timeline-phase">
+      <div class="phase-num">Phase ${i + 1}</div>
+      <div class="phase-name">${esc(p.phase)}</div>
+      <div class="phase-dur">${esc(p.duration_estimate)}</div>
+    </div>
+  `).join('');
+
+  /* Stakeholders */
+  document.getElementById('stakeholder-row').innerHTML = DATA.key_stakeholders.map(s => `<span class="stakeholder-tag">${esc(s)}</span>`).join('');
+
+  /* Deliverables */
+  document.getElementById('deliverables-grid').innerHTML = `
+    <div class="info-card">
+      <ul>${DATA.deliverables.map(i => `<li>${esc(i)}</li>`).join('')}</ul>
+    </div>
+  `;
+
+  /* Rating scale */
+  document.getElementById('rating-grid').innerHTML = Object.entries(DATA.rating_scale_definition).map(([k, v]) => `
+    <div class="rating-card" style="border-left:4px solid ${k === 'High' ? '#ef4444' : k === 'Medium' ? '#eab308' : '#22c55e'}">
+      <div class="label" style="color:${k === 'High' ? '#ef4444' : k === 'Medium' ? '#eab308' : '#22c55e'}">${esc(k)}</div>
+      <div class="def">${esc(v)}</div>
+    </div>
+  `).join('');
+
+  /* ---- Render controls ---- */
+  function render() {
+    const search = (document.getElementById('search-input').value || '').toLowerCase().trim();
+    const domainFilter = document.getElementById('domain-select').value;
+    const activeRisk = document.querySelector('.risk-filter-btn.active');
+    const riskFilter = activeRisk ? activeRisk.dataset.risk : 'all';
+
+    const allControls = [];
+    DATA.control_domains.forEach(d => {
+      d.controls.forEach(c => {
+        allControls.push({ ...c, domain: d.domain_name, domainObj: d });
+      });
+    });
+
+    const filtered = allControls.filter(c => {
+      if (domainFilter !== 'all' && c.domain !== domainFilter) return false;
+      if (riskFilter !== 'all' && c.risk_rating !== riskFilter) return false;
+      if (search) {
+        const haystack = (c.domain + ' ' + c.control_id + ' ' + c.control_name + ' ' + c.description).toLowerCase();
+        if (!haystack.includes(search)) return false;
+      }
+      return true;
+    });
+
+    const total = allControls.length;
+    const shown = filtered.length;
+    document.getElementById('stats-bar').innerHTML = `
+      <span class="stat-chip"><strong>${total}</strong> total controls</span>
+      <span class="stat-chip"><strong>${shown}</strong> displayed</span>
+      <span class="stat-chip"><strong>${DATA.control_domains.length}</strong> domains</span>
+      <span class="stat-chip">High: <strong>${allControls.filter(c => c.risk_rating === 'High').length}</strong></span>
+      <span class="stat-chip">Medium: <strong>${allControls.filter(c => c.risk_rating === 'Medium').length}</strong></span>
+      <span class="stat-chip">Low: <strong>${allControls.filter(c => c.risk_rating === 'Low').length}</strong></span>
+    `;
+
+    /* Group by domain */
+    const groups = {};
+    filtered.forEach(c => {
+      if (!groups[c.domain]) groups[c.domain] = [];
+      groups[c.domain].push(c);
+    });
+
+    const container = document.getElementById('dashboard-content');
+    const domainNames = Object.keys(groups);
+
+    if (domainNames.length === 0) {
+      container.innerHTML = '<div class="no-results">No controls match your filter.</div>';
+      return;
+    }
+
+    const domainMeta = {};
+    DATA.control_domains.forEach(d => { domainMeta[d.domain_name] = d; });
+
+    let html = '';
+    domainNames.forEach(domain => {
+      const meta = domainMeta[domain];
+      const col = domainColor(domain);
+      const items = groups[domain];
+      const abbr = meta ? meta.domain_id : domain.split(' ').map(w => w[0]).join('').toUpperCase().slice(0,3);
+
+      html += `
+        <div class="domain-section" data-domain="${esc(domain)}">
+          <div class="domain-header" tabindex="0" role="button" aria-expanded="true">
+            <div class="left">
+              <span class="domain-badge" style="background:${col.bg};color:${col.fg}">${esc(abbr)}</span>
+              <div class="domain-info">
+                <h3>${esc(domain)}</h3>
+                ${meta && meta.control_objective ? `<div class="obj-text">${esc(meta.control_objective)}</div>` : ''}
+              </div>
+            </div>
+            <span class="count">${items.length} control${items.length !== 1 ? 's' : ''}</span>
+            <span class="chevron" aria-hidden="true">&#x25BC;</span>
+          </div>
+          <div class="domain-body">
+            <div class="controls-grid">
+              ${items.map(c => {
+                const procs = (c.test_procedures || []).map(p => `<li>${esc(p)}</li>`).join('');
+                const evid = (c.evidence_required || []).map(e => `<li class="evidence">${esc(e)}</li>`).join('');
+                const riskClass = 'risk-' + c.risk_rating.toLowerCase();
+                return `
+                  <div class="control-card" tabindex="0" role="button" aria-expanded="false">
+                    <div class="top">
+                      <span class="code">${esc(c.control_id)}</span>
+                      <span class="ctrl-name">${esc(c.control_name)}</span>
+                      <span class="risk-tag ${riskClass}">${esc(c.risk_rating)}</span>
+                    </div>
+                    <div class="desc">${esc(c.description)}</div>
+                    <div class="extra">
+                      <div class="extra-grid">
+                        <div class="extra-col">
+                          <h4>Test Procedures</h4>
+                          <ul>${procs}</ul>
+                        </div>
+                        <div class="extra-col">
+                          <h4>Evidence Required</h4>
+                          <ul>${evid}</ul>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                `;
+              }).join('')}
+            </div>
+          </div>
+        </div>
+      `;
+    });
+    container.innerHTML = html;
+
+    /* Wire domain headers */
+    container.querySelectorAll('.domain-header').forEach(h => {
+      h.addEventListener('click', function(e) {
+        const sec = this.closest('.domain-section');
+        const coll = sec.classList.toggle('collapsed');
+        this.setAttribute('aria-expanded', !coll);
+      });
+      h.addEventListener('keydown', function(e) {
+        if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); this.click(); }
+      });
+    });
+
+    /* Wire control cards */
+    container.querySelectorAll('.control-card').forEach(card => {
+      card.addEventListener('click', function(e) {
+        this.classList.toggle('open');
+        this.setAttribute('aria-expanded', this.classList.contains('open'));
+      });
+      card.addEventListener('keydown', function(e) {
+        if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); this.click(); }
+      });
+    });
+  }
+
+  /* Events */
+  document.getElementById('search-input').addEventListener('input', render);
+  document.getElementById('domain-select').addEventListener('change', render);
+  document.querySelectorAll('.risk-filter-btn').forEach(btn => {
+    btn.addEventListener('click', function() {
+      document.querySelectorAll('.risk-filter-btn').forEach(b => b.classList.remove('active'));
+      this.classList.add('active');
+      render();
+    });
+  });
+
+  /* Theme toggle */
+  const themeToggle = document.getElementById('theme-toggle');
+  themeToggle.addEventListener('click', () => {
+    const html = document.documentElement;
+    const next = html.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+    html.setAttribute('data-theme', next);
+    themeToggle.textContent = next === 'dark' ? '\u2600' : '\u263E';
+    render();
+  });
+
+  render();
+})();
+</script>
+</body>
+</html>
