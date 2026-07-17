@@ -1,0 +1,1385 @@
+{
+  "document": {
+    "reference": "ISO/IEC 27001:2022(E)",
+    "title": "Information security, cybersecurity and privacy protection — Information security management systems — Requirements",
+    "edition": "Third edition 2022-10",
+    "copyright": "© ISO/IEC 2022 — All rights reserved",
+    "pages": 26,
+    "ics": "03.100.70; 35.030"
+  },
+  "normative_references": [
+    {
+      "document": "ISO/IEC 27000",
+      "title": "Information technology — Security techniques — Information security management systems — Overview and vocabulary"
+    }
+  ],
+  "clauses": [
+    {
+      "number": "1",
+      "title": "Scope",
+      "text": "This document specifies the requirements for establishing, implementing, maintaining and continually\nimproving an information security management system within the context of the organization. This\ndocument also includes requirements for the assessment and treatment of information security risks\ntailored to the needs of the organization. The requirements set out in this document are generic and are\nintended to be applicable to all organizations, regardless of type, size or nature. Excluding any of the\nrequirements specified in Clauses 4 to 10 is not acceptable when an organization claims conformity to\nthis document.",
+      "subclauses": []
+    },
+    {
+      "number": "2",
+      "title": "Normative references",
+      "text": "The following documents are referred to in the text in such a way that some or all of their content\nconstitutes requirements of this document. For dated references, only the edition cited applies. For\nundated referencIensf,o trhmea ltaitoens tt eedchitnioonlo ogfy th-e rSeefecurernitcye dte dcohcnuiqmueesn t- (in Icnlufodrimnga tainoyn asmeceunrditmy emntasn) aagpepmlieens.t\nsystems - Overview and vocabulary\nISO/IEC 27000,",
+      "subclauses": []
+    },
+    {
+      "number": "3",
+      "title": "Terms and definitions",
+      "text": "For the purposes of this document, the terms and definitions given in ISO/IEC 27000 apply.\nISO and IEC maintain terminology databases for use in standardization at the following addresses:\n- ISO Online browsing platform: available at https:// www .iso .org/ obp\n- IEC Electropedia: available at https:// www .electropedia .org/",
+      "subclauses": []
+    },
+    {
+      "number": "4",
+      "title": "Context of the organization",
+      "text": "",
+      "subclauses": [
+        {
+          "number": "4.1",
+          "title": "Understanding the organization and its context",
+          "text": "The organization shall determine external and internal issues that are relevant to its purpose and that\naffect its ability to achieve the intended outcome(s) of its information security management system.\nNOTE Determining these issues refers to establishing the external and internal context of the organization\nconsidered in Clause 5.4.1 of ISO 31000:2018 .",
+          "requirements": []
+        },
+        {
+          "number": "4.2",
+          "title": "Understanding the needs and expectations of interested parties",
+          "text": "The organization shall determine:\na) interested parties that are relevant to the information security management system;\nb) the relevant requirements of these interested parties;\nc) which of these requirements will be addressed through the information security management\nsystem. 1\nNOTE The requirements of interested parties can include legal and regulatory requirements and contractual\nobligations.",
+          "requirements": [
+            {
+              "id": "a",
+              "text": "interested parties that are relevant to the information security management system;"
+            },
+            {
+              "id": "b",
+              "text": "the relevant requirements of these interested parties;"
+            },
+            {
+              "id": "c",
+              "text": "which of these requirements will be addressed through the information security management system."
+            }
+          ]
+        },
+        {
+          "number": "4.3",
+          "title": "Determining the scope of the information security management system",
+          "text": "The organization shall determine the boundaries and applicability of the information security\nmanagement system to establish its scope.\nWhen determining this scope, the organization shall consider:\na) the external and internal issues referred to in 4.1;\nb) the requirements referred to in 4.2;\nc) interfaces and dependencies between activities performed by the organization, and those that are\nperformed by other organizations.\nThe scope shall be available as documented information.",
+          "requirements": [
+            {
+              "id": "a",
+              "text": "the external and internal issues referred to in 4.1;"
+            },
+            {
+              "id": "b",
+              "text": "the requirements referred to in 4.2;"
+            },
+            {
+              "id": "c",
+              "text": "interfaces and dependencies between activities performed by the organization, and those that are performed by other organizations. The scope shall be available as documented information."
+            }
+          ]
+        },
+        {
+          "number": "4.4",
+          "title": "Information security management system",
+          "text": "The organization shall establish, implement, maintain and continually improve an information security\nmanagement system, including the processes needed and their interactions, in accordance with the\nrequirements of this document.",
+          "requirements": []
+        }
+      ]
+    },
+    {
+      "number": "5",
+      "title": "Leadership",
+      "text": "",
+      "subclauses": [
+        {
+          "number": "5.1",
+          "title": "Leadership and commitment",
+          "text": "Top management shall demonstrate leadership and commitment with respect to the information\nsecurity management system by:\na) ensuring the information security policy and the information security objectives are established\nand are compatible with the strategic direction of the organization;\nb) ensuring the integration of the information security management system requirements into the\norganization's processes;\nc) ensuring that the resources needed for the information security management system are available;\nd) communicating the importance of effective information security management and of conforming\nto the information security management system requirements;\ne) ensuring that the information security management system achieves its intended outcome(s);\nf) directing and supporting persons to contribute to the effectiveness of the information security\nmanagement system;\ng) promoting continual improvement; and\nh) supporting other relevant management roles to demonstrate their leadership as it applies to their\nareas of responsibility.\nNOTE Reference to \"business\" in this document can be interpreted broadly to mean those activities that are\ncore to the purposes of the organization's existence.",
+          "requirements": [
+            {
+              "id": "a",
+              "text": "ensuring the information security policy and the information security objectives are established and are compatible with the strategic direction of the organization;"
+            },
+            {
+              "id": "b",
+              "text": "ensuring the integration of the information security management system requirements into the organization's processes;"
+            },
+            {
+              "id": "c",
+              "text": "ensuring that the resources needed for the information security management system are available;"
+            },
+            {
+              "id": "d",
+              "text": "communicating the importance of effective information security management and of conforming to the information security management system requirements;"
+            },
+            {
+              "id": "e",
+              "text": "ensuring that the information security management system achieves its intended outcome(s);"
+            },
+            {
+              "id": "f",
+              "text": "directing and supporting persons to contribute to the effectiveness of the information security management system;"
+            },
+            {
+              "id": "g",
+              "text": "promoting continual improvement; and"
+            },
+            {
+              "id": "h",
+              "text": "supporting other relevant management roles to demonstrate their leadership as it applies to their areas of responsibility."
+            }
+          ]
+        },
+        {
+          "number": "5.2",
+          "title": "Policy",
+          "text": "Top management shall establish an information security policy that:\na) is appropriate to the purpose of the organization;\nb) includes information security objectives (see 6.2) or provides the framework for setting information\nsecurity objectives;\nc) includes a commitment to satisfy applicable requirements related to information security;\nd) includes a commitment to continual improvement of the information security management system.\nThe information security policy shall:\ne) be available as documented information;\nf) be communicated within the organization;\ng) be available to interested parties, as appropriate.",
+          "requirements": [
+            {
+              "id": "a",
+              "text": "is appropriate to the purpose of the organization;"
+            },
+            {
+              "id": "b",
+              "text": "includes information security objectives (see 6.2) or provides the framework for setting information security objectives;"
+            },
+            {
+              "id": "c",
+              "text": "includes a commitment to satisfy applicable requirements related to information security;"
+            },
+            {
+              "id": "d",
+              "text": "includes a commitment to continual improvement of the information security management system. The information security policy shall:"
+            },
+            {
+              "id": "e",
+              "text": "be available as documented information;"
+            },
+            {
+              "id": "f",
+              "text": "be communicated within the organization;"
+            },
+            {
+              "id": "g",
+              "text": "be available to interested parties, as appropriate."
+            }
+          ]
+        },
+        {
+          "number": "5.3",
+          "title": "Organizational roles, responsibilities and authorities",
+          "text": "Top management shall ensure that the responsibilities and authorities for roles relevant to information\nsecurity are assigned and communicated within the organization.\nTop management shall assign the responsibility and authority for:\na) ensuring that the information security management system conforms to the requirements of this\ndocument;\nb) reporting on the performance of the information security management system to top management.\nNOTE Top management can also assign responsibilities and authorities for reporting performance of the\ninformation security management system within the organization.",
+          "requirements": [
+            {
+              "id": "a",
+              "text": "ensuring that the information security management system conforms to the requirements of this document;"
+            },
+            {
+              "id": "b",
+              "text": "reporting on the performance of the information security management system to top management."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": "6",
+      "title": "Planning",
+      "text": "",
+      "subclauses": [
+        {
+          "number": "6.1",
+          "title": "Actions to address risks and opportunities",
+          "text": "",
+          "requirements": []
+        },
+        {
+          "number": "6.1.1",
+          "title": "General",
+          "text": "When planning for the information security management system, the organization shall consider\nthe issues referred to in 4.1 and the requirements referred to in 4.2 and determine the risks and\nopportunities that need to be addressed to:\na) ensure the information security management system can achieve its intended outcome(s);\nb) prevent, or reduce, undesired effects;\nc) achieve continual improvement.\nThe organization shall plan:\nd) actions to address these risks and opportunities; and\ne) how to\n1) integrate and implement the actions into its information security management system\nprocesses; and\n2) evaluate the effect-i-ven,es,,,s,, of, ,t,h,ese,, actions. 3",
+          "requirements": [
+            {
+              "id": "a",
+              "text": "ensure the information security management system can achieve its intended outcome(s);"
+            },
+            {
+              "id": "b",
+              "text": "prevent, or reduce, undesired effects;"
+            },
+            {
+              "id": "c",
+              "text": "achieve continual improvement. The organization shall plan:"
+            },
+            {
+              "id": "d",
+              "text": "actions to address these risks and opportunities; and"
+            },
+            {
+              "id": "e",
+              "text": "how to"
+            },
+            {
+              "id": "1",
+              "text": "integrate and implement the actions into its information security management system processes; and"
+            },
+            {
+              "id": "2",
+              "text": "evaluate the effect-i-ven,, of, ,, actions."
+            }
+          ]
+        },
+        {
+          "number": "6.1.2",
+          "title": "Information security risk assessment",
+          "text": "The organization shall define and apply an information security risk assessment process that:\na) establishes and maintains information security risk criteria that include:\n1) the risk acceptance criteria; and\n2) criteria for performing information security risk assessments;\nb) ensures that repeated information security risk assessments produce consistent, valid and\ncomparable results;\nc) identifies the information security risks:\n1) apply the information security risk assessment process to identify risks associated with\nthe loss of confidentiality, integrity and availability for information within the scope of the\ninformation security management system; and\n2) identify the risk owners;\nd) analyses the information security risks:\n1) assess the potential consequences that would result if the risks identified in 6.1.2 c) 1) were to\nmaterialize;\n2) assess the realistic likelihood of the occurrence of the risks identified in 6.1.2 c) 1); and\n3) determine the levels of risk;\ne) evaluates the information security risks:\n1) compare the results of risk analysis with the risk criteria established in 6.1.2 a); and\n2) prioritize the analysed risks for risk treatment.\nThe organization shall retain documented information about the information security risk assessment\nprocess.",
+          "requirements": [
+            {
+              "id": "a",
+              "text": "establishes and maintains information security risk criteria that include:"
+            },
+            {
+              "id": "b",
+              "text": "ensures that repeated information security risk assessments produce consistent, valid and comparable results;"
+            },
+            {
+              "id": "c",
+              "text": "identifies the information security risks:"
+            },
+            {
+              "id": "d",
+              "text": "analyses the information security risks:"
+            },
+            {
+              "id": "e",
+              "text": "evaluates the information security risks:"
+            },
+            {
+              "id": "1",
+              "text": "the risk acceptance criteria; and"
+            },
+            {
+              "id": "2",
+              "text": "criteria for performing information security risk assessments;"
+            },
+            {
+              "id": "1",
+              "text": "apply the information security risk assessment process to identify risks associated with the loss of confidentiality, integrity and availability for information within the scope of the information security management system; and"
+            },
+            {
+              "id": "2",
+              "text": "identify the risk owners;"
+            },
+            {
+              "id": "1",
+              "text": "assess the potential consequences that would result if the risks identified in 6.1.2 c) 1) were to materialize;"
+            },
+            {
+              "id": "2",
+              "text": "assess the realistic likelihood of the occurrence of the risks identified in 6.1.2 c) 1); and"
+            },
+            {
+              "id": "3",
+              "text": "determine the levels of risk;"
+            },
+            {
+              "id": "1",
+              "text": "compare the results of risk analysis with the risk criteria established in 6.1.2 a); and"
+            },
+            {
+              "id": "2",
+              "text": "prioritize the analysed risks for risk treatment. The organization shall retain documented information about the information security risk assessment process."
+            }
+          ]
+        },
+        {
+          "number": "6.1.3",
+          "title": "Information security risk treatment",
+          "text": "The organization shall define and apply an information security risk treatment process to:\na) select appropriate information security risk treatment options, taking account of the risk\nassessment results;\nb) determine all controls that are necessary to implement the information security risk treatment\noption(s) chosen;\nNOTE 1 Organizations can design controls as required, or identify them from any source.\nc) compare the controls determined in 6.1.3 b) above with those in Annex A and verify that no\nnecessary controls have been omitted;\nNOTE 2 Annex A contains a list of possible information security controls. Users of this document are\ndirected to Annex A to ensure that no necessary information security controls are overlooked.\nNOTE 3 The information security controls listed in Annex A are not exhaustive and additional information\nsecurity controls can be included if needed.\nd) produce a Statement of Applicability that contains:\n- the necessary controls (see 6.1.3 b) and c));\n- justification for their inclusion;\n- whether the necessary controls are implemented or not; and\n- the justification for excluding any of the Annex A controls.\ne) formulate an information security risk treatment plan; and\nf) obtain risk owners' approval of the information security risk treatment plan and acceptance of the\nresidual information security risks.\nThe organization shall retain documented information about the information security risk treatment\nprocess.\nNOTE 4 The information security risk assessment and treatment process in this document aligns with the\nprinciples and generic guidelines provided in ISO 31000 .",
+          "requirements": [
+            {
+              "id": "a",
+              "text": "select appropriate information security risk treatment options, taking account of the risk assessment results;"
+            },
+            {
+              "id": "b",
+              "text": "determine all controls that are necessary to implement the information security risk treatment option(s) chosen;"
+            },
+            {
+              "id": "c",
+              "text": "compare the controls determined in 6.1.3 b) above with those in Annex A and verify that no necessary controls have been omitted;"
+            },
+            {
+              "id": "d",
+              "text": "produce a Statement of Applicability that contains: - the necessary controls (see 6.1.3 b) and c)); - justification for their inclusion; - whether the necessary controls are implemented or not; and - the justification for excluding any of the Annex A controls."
+            },
+            {
+              "id": "e",
+              "text": "formulate an information security risk treatment plan; and"
+            },
+            {
+              "id": "f",
+              "text": "obtain risk owners' approval of the information security risk treatment plan and acceptance of the residual information security risks. The organization shall retain documented information about the information security risk treatment process."
+            }
+          ]
+        },
+        {
+          "number": "6.2",
+          "title": "Information security objectives and planning to achieve them",
+          "text": "The organization shall establish information security objectives at relevant functions and levels.\nThe information security objectives shall:\na) be consistent with the information security policy;\nb) be measurable (if practicable);\nc) take into account applicable information security requirements, and results from risk assessment\nand risk treatment;\nd) be monitored;\ne) be communicated;\nf) be updated as appropriate;\ng) be available as documented information.\nThe organization shall retain documented information on the information security objectives.\nWhen planning how to achieve its information security objectives, the organization shall determine:\nh) what will be done;\ni) what resources will be required;\nj) who will be responsible;\nk) when it will be completed; and\nl) how the results will be evaluated.",
+          "requirements": [
+            {
+              "id": "a",
+              "text": "be consistent with the information security policy;"
+            },
+            {
+              "id": "b",
+              "text": "be measurable (if practicable);"
+            },
+            {
+              "id": "c",
+              "text": "take into account applicable information security requirements, and results from risk assessment and risk treatment;"
+            },
+            {
+              "id": "d",
+              "text": "be monitored;"
+            },
+            {
+              "id": "e",
+              "text": "be communicated;"
+            },
+            {
+              "id": "f",
+              "text": "be updated as appropriate;"
+            },
+            {
+              "id": "g",
+              "text": "be available as documented information. The organization shall retain documented information on the information security objectives. When planning how to achieve its information security objectives, the organization shall determine:"
+            },
+            {
+              "id": "h",
+              "text": "what will be done;"
+            },
+            {
+              "id": "i",
+              "text": "what resources will be required;"
+            },
+            {
+              "id": "j",
+              "text": "who will be responsible;"
+            },
+            {
+              "id": "k",
+              "text": "when it will be completed; and"
+            },
+            {
+              "id": "l",
+              "text": "how the results will be evaluated."
+            }
+          ]
+        },
+        {
+          "number": "6.3",
+          "title": "Planning of changes",
+          "text": "When the organization determines the need for changes to the information security management\nsystem, the changes shall be carried out in a planned manner.",
+          "requirements": []
+        }
+      ]
+    },
+    {
+      "number": "7",
+      "title": "Support",
+      "text": "",
+      "subclauses": [
+        {
+          "number": "7.1",
+          "title": "Resources",
+          "text": "The organization shall determine and provide the resources needed for the establishment,\nimplementation, maintenance and continual improvement of the information security management\nsystem.",
+          "requirements": []
+        },
+        {
+          "number": "7.2",
+          "title": "Competence",
+          "text": "The organization shall:\na) determine the necessary competence of person(s) doing work under its control that affects its\ninformation security performance;\nb) ensure that these persons are competent on the basis of appropriate education, training, or\nexperience;\nc) where applicable, take actions to acquire the necessary competence, and evaluate the effectiveness\nof the actions taken; and\nd) retain appropriate documented information as evidence of competence.\nNOTE Applicable actions can include, for example: the provision of training to, the mentoring of, or the reassignment of current employees; or the hiring or contracting of competent persons.",
+          "requirements": [
+            {
+              "id": "a",
+              "text": "determine the necessary competence of person(s) doing work under its control that affects its information security performance;"
+            },
+            {
+              "id": "b",
+              "text": "ensure that these persons are competent on the basis of appropriate education, training, or experience;"
+            },
+            {
+              "id": "c",
+              "text": "where applicable, take actions to acquire the necessary competence, and evaluate the effectiveness of the actions taken; and"
+            },
+            {
+              "id": "d",
+              "text": "retain appropriate documented information as evidence of competence."
+            }
+          ]
+        },
+        {
+          "number": "7.3",
+          "title": "Awareness",
+          "text": "Persons doing work under the organization's control shall be aware of:\na) the information security policy;\nb) their contribution to the effectiveness of the information security management system, including\nthe benefits of improved information security performance; and\nc) the implications of not conforming with the information security management system\nrequirements.",
+          "requirements": [
+            {
+              "id": "a",
+              "text": "the information security policy;"
+            },
+            {
+              "id": "b",
+              "text": "their contribution to the effectiveness of the information security management system, including the benefits of improved information security performance; and"
+            },
+            {
+              "id": "c",
+              "text": "the implications of not conforming with the information security management system requirements."
+            }
+          ]
+        },
+        {
+          "number": "7.4",
+          "title": "Communication",
+          "text": "The organization shall determine the need for internal and external communications relevant to the\ninformation security management system including:\na) on what to communicate;\nb) when to communicate;\nc) with whom to communicate;\nd) how to communicate.",
+          "requirements": [
+            {
+              "id": "a",
+              "text": "on what to communicate;"
+            },
+            {
+              "id": "b",
+              "text": "when to communicate;"
+            },
+            {
+              "id": "c",
+              "text": "with whom to communicate;"
+            },
+            {
+              "id": "d",
+              "text": "how to communicate."
+            }
+          ]
+        },
+        {
+          "number": "7.5",
+          "title": "Documented information",
+          "text": "",
+          "requirements": []
+        },
+        {
+          "number": "7.5.1",
+          "title": "General",
+          "text": "The organization's information security management system shall include:\na) documented information required by this document; and\nb) documented information determined by the organization as being necessary for the effectiveness\nof the information security management system.\nNOTE The extent of documented information for an information security management system can differ\nfrom one organization to another due to:\n1) the size of organization and its type of activities, processes, products and services;\n2) the complexity of processes and their interactions; and\n3) the competence of persons.",
+          "requirements": [
+            {
+              "id": "a",
+              "text": "documented information required by this document; and"
+            },
+            {
+              "id": "b",
+              "text": "documented information determined by the organization as being necessary for the effectiveness of the information security management system."
+            },
+            {
+              "id": "1",
+              "text": "the size of organization and its type of activities, processes, products and services;"
+            },
+            {
+              "id": "2",
+              "text": "the complexity of processes and their interactions; and"
+            },
+            {
+              "id": "3",
+              "text": "the competence of persons."
+            }
+          ]
+        },
+        {
+          "number": "7.5.2",
+          "title": "Creating and updating",
+          "text": "When creating and updating documented information the organization shall ensure appropriate:\na) identification and description (e.g. a title, date, author, or reference number);\nb) format (e.g. language, software version, graphics) and media (e.g. paper, electronic); and\nc) review and approval for suitability and adequacy.\n7.5.3 of documented information\nDocumented information required by the information security management system and by this\ndocument shall be controlled to ensure:\na) it is available and suitable for use, where and when it is needed; and\nb) it is adequately protected (e.g. from loss of confidentiality, improper use, or loss of integrity).\nFor the control of documented information, the organization shall address the following activities, as\napplicable:\nc) distribution, access, retrieval and use;\nd) storage and preservation, including the preservation of legibility;\ne) control of changes (e.g. version control); and\nf) retention and disposition.\nDocumented information of external origin, determined by the organization to be necessary for\nthe planning and operation of the information security management system, shall be identified as\nappropriate, and controlled.\nNOTE Access can imply a decision regarding the permission to view the documented information only, or\nthe permission and authority to view and change the documented information, etc.",
+          "requirements": [
+            {
+              "id": "a",
+              "text": "identification and description (e.g. a title, date, author, or reference number);"
+            },
+            {
+              "id": "b",
+              "text": "format (e.g. language, software version, graphics) and media (e.g. paper, electronic); and"
+            },
+            {
+              "id": "c",
+              "text": "review and approval for suitability and adequacy. 7.5.3 of documented information Documented information required by the information security management system and by this document shall be controlled to ensure:"
+            },
+            {
+              "id": "a",
+              "text": "it is available and suitable for use, where and when it is needed; and"
+            },
+            {
+              "id": "b",
+              "text": "it is adequately protected (e.g. from loss of confidentiality, improper use, or loss of integrity). For the control of documented information, the organization shall address the following activities, as applicable:"
+            },
+            {
+              "id": "c",
+              "text": "distribution, access, retrieval and use;"
+            },
+            {
+              "id": "d",
+              "text": "storage and preservation, including the preservation of legibility;"
+            },
+            {
+              "id": "e",
+              "text": "control of changes (e.g. version control); and"
+            },
+            {
+              "id": "f",
+              "text": "retention and disposition. Documented information of external origin, determined by the organization to be necessary for the planning and operation of the information security management system, shall be identified as appropriate, and controlled."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": "8",
+      "title": "Operation",
+      "text": "",
+      "subclauses": [
+        {
+          "number": "8.1",
+          "title": "Operational planning and control",
+          "text": "The organization shall plan, implement and control the processes needed to meet requirements, and to\nimplement the actions determined in Clause 6, by:\n- establishing criteria for the processes;\n- implementing control of the processes in accordance with the criteria.\nDocumented information shall be available to the extent necessary to have confidence that the\nprocesses have been carried out as planned.\nThe organization shall control planned changes and review the consequences of unintended changes,\ntaking action to mitigate any adverse effects, as necessary.\nThe organization shall ensure that externally provided processes, products or services that are relevant\nto the information security management system are controlled.",
+          "requirements": []
+        },
+        {
+          "number": "8.2",
+          "title": "Information security risk assessment",
+          "text": "The organization shall perform information security risk assessments at planned intervals or when\nsignificant changes are proposed or occur, taking account of the criteria established in 6.1.2 a).\nThe organization shall retain documented information of the results of the information security risk\nassessments.",
+          "requirements": []
+        },
+        {
+          "number": "8.3",
+          "title": "Information security risk treatment",
+          "text": "The organization shall implement the information security risk treatment plan.\nThe organization shall retain documented information of the results of the information security risk\ntreatment.",
+          "requirements": []
+        }
+      ]
+    },
+    {
+      "number": "9",
+      "title": "Performance evaluation",
+      "text": "",
+      "subclauses": [
+        {
+          "number": "9.1",
+          "title": "Monitoring, measurement, analysis and evaluation",
+          "text": "The organization shall determine:\na) what needs to be monitored and measured, including information security processes and controls;\nb) the methods for monitoring, measurement, analysis and evaluation, as applicable, to ensure\nvalid results. The methods selected should produce comparable and reproducible results to be\nconsidered valid;\nc) when the monitoring and measuring shall be performed;\nd) who shall monitor and measure;\ne) when the results from monitoring and measurement shall be analysed and evaluated;\nf) who shall analyse and evaluate these results.\nDocumented information shall be available as evidence of the results.\nThe organization shall evaluate the information security performance and the effectiveness of the\ninformation security management system.",
+          "requirements": [
+            {
+              "id": "a",
+              "text": "what needs to be monitored and measured, including information security processes and controls;"
+            },
+            {
+              "id": "b",
+              "text": "the methods for monitoring, measurement, analysis and evaluation, as applicable, to ensure valid results. The methods selected should produce comparable and reproducible results to be considered valid;"
+            },
+            {
+              "id": "c",
+              "text": "when the monitoring and measuring shall be performed;"
+            },
+            {
+              "id": "d",
+              "text": "who shall monitor and measure;"
+            },
+            {
+              "id": "e",
+              "text": "when the results from monitoring and measurement shall be analysed and evaluated;"
+            },
+            {
+              "id": "f",
+              "text": "who shall analyse and evaluate these results. Documented information shall be available as evidence of the results. The organization shall evaluate the information security performance and the effectiveness of the information security management system."
+            }
+          ]
+        },
+        {
+          "number": "9.2",
+          "title": "Internal audit",
+          "text": "",
+          "requirements": []
+        },
+        {
+          "number": "9.2.1",
+          "title": "General",
+          "text": "The organization shall conduct internal audits at planned intervals to provide information on whether\nthe information security management system:\na) conforms to\n1) the organization's own requirements for its information security management system;\n2) the requirements of this document;\nb) is effectively implemented and maintained.",
+          "requirements": [
+            {
+              "id": "a",
+              "text": "conforms to"
+            },
+            {
+              "id": "b",
+              "text": "is effectively implemented and maintained."
+            },
+            {
+              "id": "1",
+              "text": "the organization's own requirements for its information security management system;"
+            },
+            {
+              "id": "2",
+              "text": "the requirements of this document;"
+            }
+          ]
+        },
+        {
+          "number": "9.2.2",
+          "title": "Internal audit programme",
+          "text": "The organization shall plan, establish, implement and maintain an audit programme(s), including the\nfrequency, methods, responsibilities, planning requirements and reporting.\nWhen establishing the internal audit programme(s), the organization shall consider the importance of\nthe processes concerned and the results of previous audits.\nThe organization shall:\na) define the audit criteria and scope for each audit;\nb) select auditors and conduct audits that ensure objectivity and the impartiality of the audit process;\nc) ensure that the results of the audits are reported to relevant management;\nDocumented information shall be available as evidence of the implementation of the audit programme(s)\nand the audit results.",
+          "requirements": [
+            {
+              "id": "a",
+              "text": "define the audit criteria and scope for each audit;"
+            },
+            {
+              "id": "b",
+              "text": "select auditors and conduct audits that ensure objectivity and the impartiality of the audit process;"
+            },
+            {
+              "id": "c",
+              "text": "ensure that the results of the audits are reported to relevant management; Documented information shall be available as evidence of the implementation of the audit programme(s) and the audit results."
+            }
+          ]
+        },
+        {
+          "number": "9.3",
+          "title": "Management review",
+          "text": "",
+          "requirements": []
+        },
+        {
+          "number": "9.3.1",
+          "title": "General",
+          "text": "Top management shall review the organization's information security management system at planned\nintervals to ensure its continuing suitability, adequacy and effectiveness.",
+          "requirements": []
+        },
+        {
+          "number": "9.3.2",
+          "title": "Management review inputs",
+          "text": "The management review shall include consideration of:\na) the status of actions from previous management reviews;\nb) changes in external and internal issues that are relevant to the information security management\nsystem;\nc) changes in needs and expectations of interested parties that are relevant to the information\nsecurity management system;\nd) feedback on the information security performance, including trends in:\n1) nonconformities and corrective actions;\n2) monitoring and measurement results;\n3) audit results;\n4) fulfilment of information security objectives;\ne) feedback from interested parties;\nf) results of risk assessment and status of risk treatment plan;\ng) opportunities for continual improvement.",
+          "requirements": [
+            {
+              "id": "a",
+              "text": "the status of actions from previous management reviews;"
+            },
+            {
+              "id": "b",
+              "text": "changes in external and internal issues that are relevant to the information security management system;"
+            },
+            {
+              "id": "c",
+              "text": "changes in needs and expectations of interested parties that are relevant to the information security management system;"
+            },
+            {
+              "id": "d",
+              "text": "feedback on the information security performance, including trends in:"
+            },
+            {
+              "id": "e",
+              "text": "feedback from interested parties;"
+            },
+            {
+              "id": "f",
+              "text": "results of risk assessment and status of risk treatment plan;"
+            },
+            {
+              "id": "g",
+              "text": "opportunities for continual improvement."
+            },
+            {
+              "id": "1",
+              "text": "nonconformities and corrective actions;"
+            },
+            {
+              "id": "2",
+              "text": "monitoring and measurement results;"
+            },
+            {
+              "id": "3",
+              "text": "audit results;"
+            },
+            {
+              "id": "4",
+              "text": "fulfilment of information security objectives;"
+            }
+          ]
+        },
+        {
+          "number": "9.3.3",
+          "title": "Management review results",
+          "text": "The results of the management review shall include decisions related to continual improvement\nopportunities and any needs for changes to the information security management system.\nDocumented information shall be available as evidence of the results of management reviews.",
+          "requirements": []
+        }
+      ]
+    },
+    {
+      "number": "10",
+      "title": "Improvement",
+      "text": "",
+      "subclauses": [
+        {
+          "number": "10.1",
+          "title": "Continual improvement",
+          "text": "The organization shall continually improve the suitability, adequacy and effectiveness of the information\nsecurity management system.",
+          "requirements": []
+        },
+        {
+          "number": "10.2",
+          "title": "Nonconformity and corrective action",
+          "text": "When a nonconformity occurs, the organization shall:\na) react to the nonconformity, and as applicable:\n1) take action to control and correct it;\n2) deal with the consequences;\nb) evaluate the need for action to eliminate the causes of nonconformity, in order that it does not recur\nor occur elsewhere, by:\n1) reviewing the nonconformity;\n2) determining the causes of the nonconformity; and\n3) determining if similar nonconformities exist, or could potentially occur;\nc) implement any action needed;\nd) review the effectiveness of any corrective action taken; and\ne) make changes to the information security management system, if necessary.\nCorrective actions shall be appropriate to the effects of the nonconformities encountered.\nDocumented information shall be available as evidence of:\nf) the nature of the nonconformities and any subsequent actions taken,\ng) the results of any corrective action.",
+          "requirements": [
+            {
+              "id": "a",
+              "text": "react to the nonconformity, and as applicable:"
+            },
+            {
+              "id": "b",
+              "text": "evaluate the need for action to eliminate the causes of nonconformity, in order that it does not recur or occur elsewhere, by:"
+            },
+            {
+              "id": "c",
+              "text": "implement any action needed;"
+            },
+            {
+              "id": "d",
+              "text": "review the effectiveness of any corrective action taken; and"
+            },
+            {
+              "id": "e",
+              "text": "make changes to the information security management system, if necessary. Corrective actions shall be appropriate to the effects of the nonconformities encountered. Documented information shall be available as evidence of:"
+            },
+            {
+              "id": "f",
+              "text": "the nature of the nonconformities and any subsequent actions taken,"
+            },
+            {
+              "id": "g",
+              "text": "the results of any corrective action."
+            },
+            {
+              "id": "1",
+              "text": "take action to control and correct it;"
+            },
+            {
+              "id": "2",
+              "text": "deal with the consequences;"
+            },
+            {
+              "id": "1",
+              "text": "reviewing the nonconformity;"
+            },
+            {
+              "id": "2",
+              "text": "determining the causes of the nonconformity; and"
+            },
+            {
+              "id": "3",
+              "text": "determining if similar nonconformities exist, or could potentially occur;"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "annex_a": {
+    "title": "Information security controls reference",
+    "note": "The information security controls listed in Table A.1 are directly derived from and aligned with those listed in ISO/IEC 27002:2022, Clauses 5 to 8, and shall be used in context with 6.1.3.",
+    "controls": [
+      {
+        "id": "5.1",
+        "category": "Organizational",
+        "name": "Policies for information security",
+        "statement": "Information security policy and topic-specific policies shall be defined, approved by management, published, communicated to and acknowledged by relevant personnel and relevant interested parties, and reviewed at planned intervals and if significant changes occur."
+      },
+      {
+        "id": "5.2",
+        "category": "Organizational",
+        "name": "Information security roles and responsibilities",
+        "statement": "Information security roles and responsibilities shall be defined and allocated according to the organization needs."
+      },
+      {
+        "id": "5.3",
+        "category": "Organizational",
+        "name": "Segregation of duties",
+        "statement": "Conflicting duties and conflicting areas of responsibility shall be segregated."
+      },
+      {
+        "id": "5.4",
+        "category": "Organizational",
+        "name": "Management responsibilities",
+        "statement": "Management shall require all personnel to apply information security in accordance with the established information security policy, topic-specific policies and procedures of the organization."
+      },
+      {
+        "id": "5.5",
+        "category": "Organizational",
+        "name": "Contact with authorities",
+        "statement": "The organization shall establish and maintain contact with relevant authorities."
+      },
+      {
+        "id": "5.6",
+        "category": "Organizational",
+        "name": "Contact with special interest groups",
+        "statement": "The organization shall establish and maintain contact with special interest groups or other specialist security forums and professional associations."
+      },
+      {
+        "id": "5.7",
+        "category": "Organizational",
+        "name": "Threat intelligence",
+        "statement": "Information relating to information security threats shall be collected and analysed to produce threat intelligence."
+      },
+      {
+        "id": "5.8",
+        "category": "Organizational",
+        "name": "Information security in project management",
+        "statement": "Information security shall be integrated into project management."
+      },
+      {
+        "id": "5.9",
+        "category": "Organizational",
+        "name": "Inventory of information and other associated assets",
+        "statement": "An inventory of information and other associated assets, including owners, shall be developed and maintained."
+      },
+      {
+        "id": "5.10",
+        "category": "Organizational",
+        "name": "Acceptable use of information and other associated assets",
+        "statement": "Rules for the acceptable use and procedures for handling information and other associated assets shall be identified, documented and implemented."
+      },
+      {
+        "id": "5.11",
+        "category": "Organizational",
+        "name": "Return of assets",
+        "statement": "Personnel and other interested parties as appropriate shall return all the organization's assets in their possession upon change or termination of their employment, contract or agreement."
+      },
+      {
+        "id": "5.12",
+        "category": "Organizational",
+        "name": "Classification of information",
+        "statement": "Information shall be classified according to the information security needs of the organization based on confidentiality, integrity, availability and relevant interested party requirements."
+      },
+      {
+        "id": "5.13",
+        "category": "Organizational",
+        "name": "Labelling of information",
+        "statement": "An appropriate set of procedures for information labelling shall be developed and implemented in accordance with the information classification scheme adopted by the organization."
+      },
+      {
+        "id": "5.14",
+        "category": "Organizational",
+        "name": "Information transfer",
+        "statement": "Information transfer rules, procedures, or agreements shall be in place for all types of transfer facilities within the organization and between the organization and other parties."
+      },
+      {
+        "id": "5.15",
+        "category": "Organizational",
+        "name": "Access control",
+        "statement": "Rules to control physical and logical access to information and other associated assets shall be established and implemented based on business and information security requirements."
+      },
+      {
+        "id": "5.16",
+        "category": "Organizational",
+        "name": "Identity management",
+        "statement": "The full life cycle of identities shall be managed."
+      },
+      {
+        "id": "5.17",
+        "category": "Organizational",
+        "name": "Authentication information",
+        "statement": "Allocation and management of authentication information shall be controlled by a management process, including advising personnel on appropriate handling of authentication information."
+      },
+      {
+        "id": "5.18",
+        "category": "Organizational",
+        "name": "Access rights",
+        "statement": "Access rights to information and other associated assets shall be provisioned, reviewed, modified and removed in accordance with the organization's topic-specific policy on and rules for access control."
+      },
+      {
+        "id": "5.19",
+        "category": "Organizational",
+        "name": "Information security in supplier relationships",
+        "statement": "Processes and procedures shall be defined and implemented to manage the information security risks associated with the use of supplier's products or services."
+      },
+      {
+        "id": "5.20",
+        "category": "Organizational",
+        "name": "Addressing information security within supplier agreements",
+        "statement": "Relevant information security requirements shall be established and agreed with each supplier based on the type of supplier relationship."
+      },
+      {
+        "id": "5.21",
+        "category": "Organizational",
+        "name": "Managing information security in the ICT supply chain",
+        "statement": "Processes and procedures shall be defined and implemented to manage the information security risks associated with the ICT products and services supply chain."
+      },
+      {
+        "id": "5.22",
+        "category": "Organizational",
+        "name": "Monitoring, review and change management of supplier services",
+        "statement": "The organization shall regularly monitor, review, evaluate and manage change in supplier information security practices and service delivery."
+      },
+      {
+        "id": "5.23",
+        "category": "Organizational",
+        "name": "Information security for use of cloud services",
+        "statement": "Processes for acquisition, use, management and exit from cloud services shall be established in accordance with the organization's information security requirements."
+      },
+      {
+        "id": "5.24",
+        "category": "Organizational",
+        "name": "Information security incident management planning and preparation",
+        "statement": "The organization shall plan and prepare for managing information security incidents by defining, establishing and communicating information security incident management processes, roles and responsibilities."
+      },
+      {
+        "id": "5.25",
+        "category": "Organizational",
+        "name": "Assessment and decision on information security events",
+        "statement": "The organization shall assess information security events and decide if they are to be categorized as information security incidents."
+      },
+      {
+        "id": "5.26",
+        "category": "Organizational",
+        "name": "Response to information security incidents",
+        "statement": "Information security incidents shall be responded to in accordance with the documented procedures."
+      },
+      {
+        "id": "5.27",
+        "category": "Organizational",
+        "name": "Learning from information security incidents",
+        "statement": "Knowledge gained from information security incidents shall be used to strengthen and improve the information security controls."
+      },
+      {
+        "id": "5.28",
+        "category": "Organizational",
+        "name": "Collection of evidence",
+        "statement": "The organization shall establish and implement procedures for the identification, collection, acquisition and preservation of evidence related to information security events."
+      },
+      {
+        "id": "5.29",
+        "category": "Organizational",
+        "name": "Information security during disruption",
+        "statement": "The organization shall plan how to maintain information security at an appropriate level during disruption."
+      },
+      {
+        "id": "5.30",
+        "category": "Organizational",
+        "name": "ICT readiness for business continuity",
+        "statement": "ICT readiness shall be planned, implemented, maintained and tested based on business continuity objectives and ICT continuity requirements."
+      },
+      {
+        "id": "5.31",
+        "category": "Organizational",
+        "name": "Legal, statutory, regulatory and contractual requirements",
+        "statement": "Legal, statutory, regulatory and contractual requirements relevant to information security and the organization's approach to meet these requirements shall be identified, documented and kept up to date."
+      },
+      {
+        "id": "5.32",
+        "category": "Organizational",
+        "name": "Intellectual property rights",
+        "statement": "The organization shall implement appropriate procedures to protect intellectual property rights."
+      },
+      {
+        "id": "5.33",
+        "category": "Organizational",
+        "name": "Protection of records",
+        "statement": "Records shall be protected from loss, destruction, falsification, unauthorized access and unauthorized release."
+      },
+      {
+        "id": "5.34",
+        "category": "Organizational",
+        "name": "Privacy and protection of personal identifiable information",
+        "statement": "The organization shall identify and meet the requirements regarding the preservation of privacy and protection of personal identifiable information (PII) according to applicable laws and regulations and contractual requirements."
+      },
+      {
+        "id": "5.35",
+        "category": "Organizational",
+        "name": "Independent review of information security",
+        "statement": "The organization's approach to managing information security and its implementation including people, processes and technologies shall be independently reviewed at planned intervals, or when significant changes to the information security management system occur."
+      },
+      {
+        "id": "5.36",
+        "category": "Organizational",
+        "name": "Compliance with policies, rules and standards for information security",
+        "statement": "Compliance with the organization's information security policy, topic-specific policies, rules and standards for information security shall be regularly reviewed."
+      },
+      {
+        "id": "5.37",
+        "category": "Organizational",
+        "name": "Documented operating procedures",
+        "statement": "Operating procedures for information processing facilities shall be documented and made available to personnel who need them."
+      },
+      {
+        "id": "6.1",
+        "category": "People",
+        "name": "Screening",
+        "statement": "Background verification checks on all candidates to become personnel shall be carried out prior to joining the organization and on an ongoing basis taking into consideration applicable laws, regulations and ethics and be proportional to the business requirements, the classification of the information to be accessed and the perceived risks."
+      },
+      {
+        "id": "6.2",
+        "category": "People",
+        "name": "Terms and conditions of employment",
+        "statement": "The employment contractual agreements shall state the personnel's and the organization's responsibilities for information security."
+      },
+      {
+        "id": "6.3",
+        "category": "People",
+        "name": "Information security awareness, education and training",
+        "statement": "Personnel of the organization and relevant interested parties shall receive appropriate information security awareness, education and training and regular updates of the organization's information security policy, topic-specific policies and procedures, as relevant for their job function."
+      },
+      {
+        "id": "6.4",
+        "category": "People",
+        "name": "Disciplinary process",
+        "statement": "A disciplinary process shall be formalized and communicated to take actions against personnel and other relevant interested parties who have committed an information security policy violation."
+      },
+      {
+        "id": "6.5",
+        "category": "People",
+        "name": "Responsibilities after termination or change of employment",
+        "statement": "Information security responsibilities and duties that remain valid after termination or change of employment shall be defined, enforced and communicated to relevant personnel and other interested parties."
+      },
+      {
+        "id": "6.6",
+        "category": "People",
+        "name": "Confidentiality or non-disclosure agreements",
+        "statement": "Confidentiality or non-disclosure agreements reflecting the organization's needs for the protection of information shall be identified, documented, regularly reviewed and signed by personnel and other relevant interested parties."
+      },
+      {
+        "id": "6.7",
+        "category": "People",
+        "name": "Remote working",
+        "statement": "Security measures shall be implemented when personnel are working remotely to protect information accessed, processed or stored outside the organization's premises."
+      },
+      {
+        "id": "6.8",
+        "category": "People",
+        "name": "Information security event reporting",
+        "statement": "The organization shall provide a mechanism for personnel to report observed or suspected information security events through appropriate channels in a timely manner."
+      },
+      {
+        "id": "7.1",
+        "category": "Physical",
+        "name": "Physical security perimeters",
+        "statement": "Security perimeters shall be defined and used to protect areas that contain information and other associated assets."
+      },
+      {
+        "id": "7.2",
+        "category": "Physical",
+        "name": "Physical entry",
+        "statement": "Secure areas shall be protected by appropriate entry controls and access points."
+      },
+      {
+        "id": "7.3",
+        "category": "Physical",
+        "name": "Securing offices, rooms and facilities",
+        "statement": "Physical security for offices, rooms and facilities shall be designed and implemented."
+      },
+      {
+        "id": "7.4",
+        "category": "Physical",
+        "name": "Physical security monitoring",
+        "statement": "Premises shall be continuously monitored for unauthorized physical access."
+      },
+      {
+        "id": "7.5",
+        "category": "Physical",
+        "name": "Protecting against physical and environmental threats",
+        "statement": "Protection against physical and environmental threats, such as natural disasters and other intentional or unintentional physical threats to infrastructure shall be designed and implemented."
+      },
+      {
+        "id": "7.6",
+        "category": "Physical",
+        "name": "Working in secure areas",
+        "statement": "Security measures for working in secure areas shall be designed and implemented."
+      },
+      {
+        "id": "7.7",
+        "category": "Physical",
+        "name": "Clear desk and clear screen",
+        "statement": "Clear desk rules for papers and removable storage media and clear screen rules for information processing facilities shall be defined and appropriately enforced."
+      },
+      {
+        "id": "7.8",
+        "category": "Physical",
+        "name": "Equipment siting and protection",
+        "statement": "Equipment shall be sited securely and protected."
+      },
+      {
+        "id": "7.9",
+        "category": "Physical",
+        "name": "Security of assets off-premises",
+        "statement": "Off-site assets shall be protected."
+      },
+      {
+        "id": "7.10",
+        "category": "Physical",
+        "name": "Storage media",
+        "statement": "Storage media shall be managed through their life cycle of acquisition, use, transportation and disposal in accordance with the organization's classification scheme and handling requirements."
+      },
+      {
+        "id": "7.11",
+        "category": "Physical",
+        "name": "Supporting utilities",
+        "statement": "Information processing facilities shall be protected from power failures and other disruptions caused by failures in supporting utilities."
+      },
+      {
+        "id": "7.12",
+        "category": "Physical",
+        "name": "Cabling security",
+        "statement": "Cables carrying power, data or supporting information services shall be protected from interception, interference or damage."
+      },
+      {
+        "id": "7.13",
+        "category": "Physical",
+        "name": "Equipment maintenance",
+        "statement": "Equipment shall be maintained correctly to ensure availability, integrity and confidentiality of information."
+      },
+      {
+        "id": "7.14",
+        "category": "Physical",
+        "name": "Secure disposal or re-use of equipment",
+        "statement": "Items of equipment containing storage media shall be verified to ensure that any sensitive data and licensed software has been removed or securely overwritten prior to disposal or re-use."
+      },
+      {
+        "id": "8.1",
+        "category": "Technological",
+        "name": "User end point devices",
+        "statement": "Information stored on, processed by or accessible via user end point devices shall be protected."
+      },
+      {
+        "id": "8.2",
+        "category": "Technological",
+        "name": "Privileged access rights",
+        "statement": "The allocation and use of privileged access rights shall be restricted and managed."
+      },
+      {
+        "id": "8.3",
+        "category": "Technological",
+        "name": "Information access restriction",
+        "statement": "The allocation and use of access rights to information and other associated assets shall be restricted in accordance with the established topic-specific policy on and rules for access control."
+      },
+      {
+        "id": "8.4",
+        "category": "Technological",
+        "name": "Access to source code",
+        "statement": "Access to source code shall be restricted."
+      },
+      {
+        "id": "8.5",
+        "category": "Technological",
+        "name": "Secure authentication",
+        "statement": "Secure authentication technologies and procedures shall be implemented based on information access restrictions and the topic-specific policy on access control."
+      },
+      {
+        "id": "8.6",
+        "category": "Technological",
+        "name": "Capacity management",
+        "statement": "The use of resources shall be monitored and adjusted in line with current and expected capacity requirements."
+      },
+      {
+        "id": "8.7",
+        "category": "Technological",
+        "name": "Protection against malware",
+        "statement": "Protection against malware shall be implemented and supported by appropriate user awareness."
+      },
+      {
+        "id": "8.8",
+        "category": "Technological",
+        "name": "Management of technical vulnerabilities",
+        "statement": "Information about technical vulnerabilities of information systems in use shall be obtained, the organization's exposure to such vulnerabilities shall be evaluated and appropriate measures shall be taken."
+      },
+      {
+        "id": "8.9",
+        "category": "Technological",
+        "name": "Configuration management",
+        "statement": "Configurations, including security configurations, of hardware, software, services and networks shall be established, documented, implemented, monitored and reviewed."
+      },
+      {
+        "id": "8.10",
+        "category": "Technological",
+        "name": "Information deletion",
+        "statement": "Information stored in information systems, devices or in any other storage media shall be deleted when no longer required."
+      },
+      {
+        "id": "8.11",
+        "category": "Technological",
+        "name": "Data masking",
+        "statement": "Data masking shall be used in accordance with the organization's topic-specific policy on access control and other related topic-specific policies, and business requirements, taking applicable legislation into consideration."
+      },
+      {
+        "id": "8.12",
+        "category": "Technological",
+        "name": "Data leakage prevention",
+        "statement": "Data leakage prevention measures shall be applied to systems, networks and any other devices that process, store or transmit sensitive information."
+      },
+      {
+        "id": "8.13",
+        "category": "Technological",
+        "name": "Information backup",
+        "statement": "Backup copies of information, software and systems shall be maintained and regularly tested in accordance with the agreed topic-specific policy on backup."
+      },
+      {
+        "id": "8.14",
+        "category": "Technological",
+        "name": "Redundancy of information processing facilities",
+        "statement": "Information processing facilities shall be implemented with redundancy to meet availability requirements."
+      },
+      {
+        "id": "8.15",
+        "category": "Technological",
+        "name": "Logging",
+        "statement": "Logs that record activities, exceptions, faults and other relevant events shall be produced, stored, protected and analysed."
+      },
+      {
+        "id": "8.16",
+        "category": "Technological",
+        "name": "Monitoring activities",
+        "statement": "Networks, systems and applications shall be monitored for anomalous behaviour and appropriate actions taken to evaluate potential information security incidents."
+      },
+      {
+        "id": "8.17",
+        "category": "Technological",
+        "name": "Clock synchronization",
+        "statement": "The clocks of information processing systems used by the organization shall be synchronized to approved time sources."
+      },
+      {
+        "id": "8.18",
+        "category": "Technological",
+        "name": "Use of privileged utility programs",
+        "statement": "The use of utility programs that can be capable of overriding system and application controls shall be restricted and tightly controlled."
+      },
+      {
+        "id": "8.19",
+        "category": "Technological",
+        "name": "Installation of software on operational systems",
+        "statement": "Procedures and measures shall be implemented to securely manage software installation on operational systems."
+      },
+      {
+        "id": "8.20",
+        "category": "Technological",
+        "name": "Networks security",
+        "statement": "Networks and network devices shall be secured, managed and controlled to protect information in systems and applications."
+      },
+      {
+        "id": "8.21",
+        "category": "Technological",
+        "name": "Security of network services",
+        "statement": "Security mechanisms, service levels and service requirements of network services shall be identified, implemented and monitored."
+      },
+      {
+        "id": "8.22",
+        "category": "Technological",
+        "name": "Segregation of networks",
+        "statement": "Groups of information services, users and information systems shall be segregated in the organization's networks."
+      },
+      {
+        "id": "8.23",
+        "category": "Technological",
+        "name": "Web filtering",
+        "statement": "Access to external websites shall be managed to reduce exposure to malicious content."
+      },
+      {
+        "id": "8.24",
+        "category": "Technological",
+        "name": "Use of cryptography",
+        "statement": "Rules for the effective use of cryptography, including cryptographic key management, shall be defined and implemented."
+      },
+      {
+        "id": "8.25",
+        "category": "Technological",
+        "name": "Secure development life cycle",
+        "statement": "Rules for the secure development of software and systems shall be established and applied."
+      },
+      {
+        "id": "8.26",
+        "category": "Technological",
+        "name": "Application security requirements",
+        "statement": "Information security requirements shall be identified, specified and approved when developing or acquiring applications."
+      },
+      {
+        "id": "8.27",
+        "category": "Technological",
+        "name": "Secure system architecture and engineering principles",
+        "statement": "Principles for engineering secure systems shall be established, documented, maintained and applied to any information system development activities."
+      },
+      {
+        "id": "8.28",
+        "category": "Technological",
+        "name": "Secure coding",
+        "statement": "Secure coding principles shall be applied to software development."
+      },
+      {
+        "id": "8.29",
+        "category": "Technological",
+        "name": "Security testing in development and acceptance",
+        "statement": "Security testing processes shall be defined and implemented in the development life cycle."
+      },
+      {
+        "id": "8.30",
+        "category": "Technological",
+        "name": "Outsourced development",
+        "statement": "The organization shall direct, monitor and review the activities related to outsourced system development."
+      },
+      {
+        "id": "8.31",
+        "category": "Technological",
+        "name": "Separation of development, test and production environments",
+        "statement": "Development, testing and production environments shall be separated and secured."
+      },
+      {
+        "id": "8.32",
+        "category": "Technological",
+        "name": "Change management",
+        "statement": "Changes to information processing facilities and information systems shall be subject to change management procedures."
+      },
+      {
+        "id": "8.33",
+        "category": "Technological",
+        "name": "Test information",
+        "statement": "Test information shall be appropriately selected, protected and managed."
+      },
+      {
+        "id": "8.34",
+        "category": "Technological",
+        "name": "Protection of information systems during audit testing",
+        "statement": "Audit tests and other assurance activities involving assessment of operational systems shall be planned and agreed between the tester and appropriate management."
+      }
+    ]
+  },
+  "bibliography": [
+    {
+      "ref": "1",
+      "document": "ISO/IEC 27002:2022",
+      "title": "Information security, cybersecurity and privacy protection — Information security controls"
+    },
+    {
+      "ref": "2",
+      "document": "ISO/IEC 27003",
+      "title": "Information technology — Security techniques — Information security management systems — Guidance"
+    },
+    {
+      "ref": "3",
+      "document": "ISO/IEC 27004",
+      "title": "Information security, cybersecurity and privacy protection — Monitoring, measurement, analysis and evaluation"
+    },
+    {
+      "ref": "4",
+      "document": "ISO/IEC 27005",
+      "title": "Information security, cybersecurity and privacy protection — Guidance on managing information security risks"
+    },
+    {
+      "ref": "5",
+      "document": "ISO 31000:2018",
+      "title": "Risk management — Guidelines"
+    }
+  ]
+}
